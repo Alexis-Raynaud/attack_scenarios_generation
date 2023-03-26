@@ -37,8 +37,8 @@ for item in events_list:
 
 events_names["0.0.0"] = "outside"
 
-max_iterations = 1000
-
+max_iterations = 10000
+max_footprint = 0
 
 
 def state_condition_comparison(  condition, state):
@@ -84,69 +84,66 @@ possible_events = []
 old_possible_events = []
 finished_graph_added= False
 
-footprint = 0
-for graph in events_graphs :
-    # if counter > self.max_iterations :
-    #     break
-    
-    #start the timer for each loop
-    start_time = time.time()
-    
-    states = copy.deepcopy(graph[1])
-    possible_events.clear()
 
-    # gather all the possible events for this given states
-    for  associated_event, event_conditions in conditions.items() :
-        if associated_event not in graph[0] and  check_conditions(event_conditions, states):
-            possible_events.append(associated_event)
+index = 0
 
 
-    if len(possible_events) == 0 or graph[0][-1][0:4]=="3.1.": #    if there is no possible event or if a final state is reached, the graph is finish 
+
+while len(events_graphs) > 0  and counter < max_iterations :
+
+     
+    new_events_graphs = []
+
+    for graph in events_graphs :
+        # if counter > self.max_iterations :
+        #     break
         
-        if  graph not in  finished_graphs :
-            finished_graphs.append(graph)
-            events_graphs.remove(graph)
-            finished_graph_added = True
-
+        #start the timer for each loop
+        start_time = time.time()
         
+        states = copy.deepcopy(graph[1])
+        possible_events.clear()
 
-    else  : # if there is possible events, we create a new graph for each possible event
-        for new_event in possible_events :
-            new_graph = copy.deepcopy(graph)
-            new_states = copy.deepcopy(states)
-            for caracteristic_name, value in caracteristics_changed[new_event].items():
-                for index in range(len(value)) :
-                    if value[index] != "-1" :
-                        new_states[caracteristic_name][index] = value[index]
+        # gather all the possible events for this given states
+        for  associated_event, event_conditions in conditions.items() :
+            if associated_event not in graph[0] and  check_conditions(event_conditions, states):
+                possible_events.append(associated_event)
 
-            new_graph[0].append(new_event)
-            new_graph[1] = copy.deepcopy(new_states)
-            events_graphs.append(new_graph)
+
+        if len(possible_events) == 0 or graph[0][-1][0:4]=="3.1.": #    if there is no possible event or if a final state is reached, the graph is finish 
+            
+            if  graph not in  finished_graphs :
+                finished_graphs.append(graph)
+                events_graphs.remove(graph)
+                finished_graph_added = True
+
+            
+
+        else  : # if there is possible events, we create a new graph for each possible event
+            for new_event in possible_events :
+                new_graph = copy.deepcopy(graph)
+                new_states = copy.deepcopy(states)
+                for caracteristic_name, value in caracteristics_changed[new_event].items():
+                    for index in range(len(value)) :
+                        if value[index] != "-1" :
+                            new_states[caracteristic_name][index] = value[index]
+
+                new_graph[0].append(new_event)
+                new_graph[1] = copy.deepcopy(new_states)
+                new_events_graphs.append(new_graph)
+            
+            
         
-        last_graph_length = len(events_graphs[-1][0])
+        #end the timer for each loop
+        end_time = time.time()
+        efficiency_graph.append([len(events_graphs), end_time-start_time])
 
-        for grand_pa_graph in events_graphs : # remove the "grand-parents" graphs
-            if len(grand_pa_graph[0]) == last_graph_length-1 : # the list is sorted by length, so if the length is not the same, we can exit the loop
-                break
-            if len(grand_pa_graph[0]) < last_graph_length-1 :
-                events_graphs.remove(grand_pa_graph)
+        counter += 1
     
-    #end the timer for each loop
-    end_time = time.time()
-    efficiency_graph.append([len(events_graphs), end_time-start_time])
+    events_graphs = copy.deepcopy(new_events_graphs)
 
-    counter += 1
+    
 
-# if not finished_graph_added :
-#     last_graph_length = len(events_graphs[-1][0])
-#     for parent_graph in events_graphs : # remove the "parents" graphs
-#                 if len(parent_graph[0]) == last_graph_length : # the list is sorted by length, so if the length is not the same, we can exit the loop
-#                     break
-#                 if len(parent_graph[0]) < last_graph_length :
-#                     events_graphs.remove(parent_graph)
-# else : finished_graph_added = False
-
-#end the timer for the global function
 end_time_global = time.time()
 
 
@@ -163,32 +160,56 @@ print("Not finished : " + str(len(events_graphs)))
 print("Finished : " + str(len(finished_graphs)))
 print ("Global timer : " + str(global_timer))
 
-count_files =0
-original_file_name = "results"
-file_name = original_file_name+ str(count_files)+".txt"
-path_main = getcwd()
-path_result_folder = join(path_main, "Results")
-existing_files = listdir("Results") 
-while file_name in existing_files:
-    count_files += 1
-    file_name = original_file_name + str(count_files)+".txt"
-   
+def create_new_render_file(file_name) :
+    count_files =0
+    original_file_name = file_name
+    file_name = original_file_name+ str(count_files)+".txt"
+    path_main = getcwd()
+    path_result_folder = join(path_main, "Results")
+    existing_files = listdir("Results") 
+    while file_name in existing_files:
+        count_files += 1
+        file_name = original_file_name + str(count_files)+".txt"
+    
+    return join(path_result_folder,file_name)
 
  
 
 
 # write the results in a specific folder ::
 
-
-with open(join(path_result_folder,file_name), "w") as f:
+file_results_short = create_new_render_file("results_short")
+with open(file_results_short, "w") as f:
     #describe the configuration$
     f.write("Footprint: " + str(footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
     f.write("\nScenarios that lead to final state : " + str(len(finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
+    f.write("\n\nScenarios that lead to final state (with event id) : ")
     for graph in finished_graphs :
         f.write("\n"+ str(graph[0]) )
     
     f.write("\nWith events names :")
     for graph in finished_graphs :
+        f.write("\n"+ str([events_names[event] for event in graph[0]]) )
+
+file_results_long = create_new_render_file("results_long")
+with open(file_results_long, "w") as f:
+    #describe the configuration$
+    f.write("Footprint: " + str(footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
+    f.write("\nScenarios that lead to final state : " + str(len(finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
+    f.write("\n\nScenarios that lead to final state (with event id) : ")
+    for graph in finished_graphs :
+        f.write("\n"+ str(graph[0]) )
+    
+    f.write("\nWith events names :")
+    for graph in finished_graphs :
+        f.write("\n"+ str([events_names[event] for event in graph[0]]) )
+    
+    f.write("\n\nScenarios that do not lead to final state (with event id) : ")
+    for graph in events_graphs :
+        f.write("\n"+ str(graph[0]) )
+    
+    f.write("\nWith events names :")
+    for graph in events_graphs :
         f.write("\n"+ str([events_names[event] for event in graph[0]]) )
 
 
