@@ -1,0 +1,3071 @@
+{
+    "atomic-attacks": [
+        {
+            "id": "0.1.0",
+            "name": "transmit_data",
+            "from": "DSRC",
+            "target": "CU",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.1.1",
+            "name": "transmit_data",
+            "from": "UMTS",
+            "target": "Integrity_Module",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.1.2",
+            "name": "transmit_data",
+            "from": "GPS",
+            "target": "Backbone_bus",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.1.3",
+            "name": "transmit_data",
+            "from": "HU",
+            "target": "Backbone_bus",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.1.4",
+            "name": "transmit_data",
+            "from": "BEM",
+            "target": "Backbone_bus",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.1.5",
+            "name": "transmit_data",
+            "from": "PTC",
+            "target": "Backbone_bus",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.1.6",
+            "name": "transmit_data",
+            "from": "Chassis_Sensor",
+            "target": "CSC",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.1.7",
+            "name": "transmit_data",
+            "from": "Environment_Sensor",
+            "target": "CSC",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.1",
+            "name": "transmit_data",
+            "from": "CU",
+            "target": "Backbone_bus",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.2.1",
+            "name": "transmit_data",
+            "from": "Backbone_bus",
+            "target": "CU",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.2.2",
+            "name": "transmit_data",
+            "from": "Backbone_bus",
+            "target": "CSC",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.2.3",
+            "name": "transmit_data",
+            "from": "Backbone_bus",
+            "target": "HU",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.2.4",
+            "name": "transmit_data",
+            "from": "Backbone_bus",
+            "target": "BEM",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.2.5",
+            "name": "transmit_data",
+            "from": "Backbone_bus",
+            "target": "PTC",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.3.1",
+            "name": "transmit_data",
+            "from": "CSC",
+            "target": "Brake_Controller",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.3.2",
+            "name": "transmit_data",
+            "from": "CSC",
+            "target": "Chassis_Sensor",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "0.2.3.3",
+            "name": "transmit_data",
+            "from": "CSC",
+            "target": "Environment_Sensor",
+            "conditions": [
+                {},
+                {"Activated" : "1"},
+                {"Reachable" : "1"}
+            ]
+        },
+        {
+            "id": "3.2.2.4.2.3",
+            "name": "manipulate_input",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "0",
+                    "value": "3"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.2.2",
+            "name": "manipulate_input",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "0",
+                    "value": "3"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.2.1.1",
+            "name": "manipulate_input",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "0",
+                    "value": "3"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.2.1.2",
+            "name": "manipulate_input",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "0",
+                    "value": "3"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 12.2.2",
+            "name": "manipulate_input",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "0",
+                    "value": "3"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "6.2.2.1",
+            "name": "jamming_GPS",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "0",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "4"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "9.1.2.1",
+            "name": "jamming_Coms",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.1.1",
+            "name": "jamming_Coms",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.2",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.1.2.1.3",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.1.1",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.1.1.1",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.2.1.1.1",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 5.3.3.1",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.2.2.2",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.4.1",
+            "name": "fake_message",
+            "from": "outside",
+            "target": "DSRC",
+            "conditions": [
+                {
+                    "time": "1",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "8"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "9.3.2.2",
+            "name": "dos_in-car_sensor",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "0",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "9"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "4.3.2.1.2.3",
+            "name": "GPS (spoofing)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.3.2.1",
+            "name": "GPS (spoofing)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.2.2.2",
+            "name": "GPS (spoofing)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 5.2.1",
+            "name": "GPS (spoofing)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 5.3.3.2",
+            "name": "GPS (spoofing)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.2.2.1.1.1",
+            "name": "GPS (spoofing)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 12.2.1",
+            "name": "GPS (spoofing)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "6.3.2.2",
+            "name": "Communications Unit (denial of service)",
+            "from": "outside",
+            "target": "GPS",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.1.1.1",
+            "name": "Communications Unit (denial of service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.3.3",
+            "name": "Communications Unit (denial of service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "7.4.3",
+            "name": "In-car Communications (disable or Denial of Service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "0",
+                    "value": "11"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "15.3.1",
+            "name": "In-car wireless interfaces for short range communication (access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "9.1.2.2",
+            "name": "In-car Communications (jamming)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.1.2",
+            "name": "In-car Communications (jamming)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.1.2.3",
+            "name": "In-car Communications (jamming)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.1.3",
+            "name": "In-car Communications (jamming)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.2.1",
+            "name": "In-car Communications (jamming)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.1.3",
+            "name": "In-car Communications (jamming)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.4.4.1",
+            "name": "In-car Communications (jamming)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "12"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1.2.2.1",
+            "name": "In-car interfaces (access exploit vulnerabilities, introduce bogus data)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "14"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.4.1.1",
+            "name": "In-car interfaces (access exploit vulnerabilities, introduce bogus data)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "14"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.4.1.2",
+            "name": "In-car interfaces (access exploit vulnerabilities, introduce bogus data)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "14"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.2.1.1.1.2",
+            "name": "In-car interfaces (access exploit vulnerabilities, introduce bogus data)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "14"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.5.1",
+            "name": "In-car interfaces (access exploit vulnerabilities, introduce bogus data)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "0",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "14"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "15.1.1",
+            "name": "In-car user hardware interfaces (access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "15"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.2.1",
+            "name": "In-car user hardware interfaces (access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "15"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1.2.2.1.2. 1 1.2.1.1",
+            "name": "Roadside Unit (access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "18"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.1.1.1",
+            "name": "Roadside Unit (access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "18"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.1.1.1.1",
+            "name": "Roadside Unit (access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "18"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "6.2.3.3",
+            "name": "E-call Service",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "18"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "6.3.1.3",
+            "name": "Centre interfaces (exploit interfaces)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "",
+                    "expertise": "",
+                    "system_knowledge": "",
+                    "opportunity": "",
+                    "equipment": "",
+                    "value": ""
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.3.2.3",
+            "name": "Centre interfaces (exploit interfaces)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "",
+                    "expertise": "",
+                    "system_knowledge": "",
+                    "opportunity": "",
+                    "equipment": "",
+                    "value": ""
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1.2.2.2",
+            "name": "In-car Communications (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "18"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1.2.3.1",
+            "name": "In-car interfaces (access physical tampering)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "7",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "5.3.4.1.1.2",
+            "name": "Head Unit (gain root access to embedded OS)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.2.1.1.1.1.1",
+            "name": "Head Unit (gain root access to embedded OS)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.2.2.1.1.1.1",
+            "name": "Head Unit (gain root access to embedded OS)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "0",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "6.2.3.1",
+            "name": "E-call Service Centre (overload)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "10",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.3.1.1",
+            "name": "E-call Service Centre (overload)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "10",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.3.2.1",
+            "name": "E-call Service Centre (overload)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "0",
+                    "system_knowledge": "3",
+                    "opportunity": "10",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "9.1.1.2",
+            "name": "Chassis Safety Controller (denial of service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.3.1",
+            "name": "Chassis Safety Controller (denial of service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "7.1.2",
+            "name": "In-car ECU (disable or Denial of Service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "4.3.3.2.2",
+            "name": "In-car ECU or bus (configuration change)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.3.1.1",
+            "name": "In-car ECU or bus (configuration change)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.3.3.1",
+            "name": "In-car ECU or bus (configuration change)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.1.1.2",
+            "name": "In-car ECU or bus (configuration change)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "21"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "10.1.1.2.2",
+            "name": "Communications Unit (malware delivered by mobile device)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "0",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 11.1.1.2.2",
+            "name": "Communications Unit (malware delivered by mobile device)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "0",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 12.1.1.2",
+            "name": "Communications Unit (malware delivered by mobile device)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "0",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 13.1.1.2.1",
+            "name": "Communications Unit (malware delivered by mobile device)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "0",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "3.1.1.2.1.3",
+            "name": "Communications Unit (exploit vulnerability of external communication protocols)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.2.2.3.1.1",
+            "name": "Communications Unit (exploit vulnerability of external communication protocols)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 10.1.1.1",
+            "name": "Communications Unit (exploit vulnerability of external communication protocols)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 11.1.1.1",
+            "name": "Communications Unit (exploit vulnerability of external communication protocols)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.5.2",
+            "name": "Communications Unit (exploit vulnerability of external communication protocols)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.1.2.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.1.3.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.1.1.2.2.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.1.2.1.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.1.2",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.3.3.1.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.1.1.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.1.1.2",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.1.2",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.2.1.1.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.2.1.2.1",
+            "name": "Wireless Communications (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.1.2.1",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.1.3.1",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.1.1.2.1.1",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.1.2.1.2",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.1.1.2",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.1.2.1",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.2.1.1",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.1.2.2",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.2.1.2",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.2.1.3",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.1.2.3",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.2.2.3.1.1",
+            "name": "Wireless Communication (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "3.2.2.4.2.1",
+            "name": "] In-car Communications (corrupt or fake messages)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.3.1.1. 7.4.1",
+            "name": "] In-car Communications (corrupt or fake messages)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "2.2.2.1",
+            "name": "Roadside Unit to Authority Communication (listen, intercept, alter, inject, replay)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "4",
+                    "value": "23"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "3.2.2.4.2.2",
+            "name": "In-car Sensors (spoof)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "24"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.3.2.1.2.2",
+            "name": "In-car Sensors (spoof)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "24"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.2.2.2",
+            "name": "Roadside Units (exploit configuration errors)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "7",
+                    "value": "26"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.1.1.3",
+            "name": "Roadside Units (exploit configuration errors)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "7",
+                    "value": "26"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.2.2",
+            "name": "Roadside Units (exploit configuration errors)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "0",
+                    "equipment": "7",
+                    "value": "26"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "6.2.3.2",
+            "name": "E-call Service Centre interfaces (denial of service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "10",
+                    "equipment": "4",
+                    "value": "27"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.3.1.2",
+            "name": "E-call Service Centre interfaces (denial of service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "10",
+                    "equipment": "4",
+                    "value": "27"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 6.3.2.2",
+            "name": "E-call Service Centre interfaces (denial of service)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "4",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "10",
+                    "equipment": "4",
+                    "value": "27"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "2.1.1.4",
+            "name": "Roadside Units (gain root access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "27"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.2.1.4",
+            "name": "Roadside Units (gain root access)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "27"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1.2.1.1",
+            "name": "In-car ECU or bus (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "27"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.3.1.3",
+            "name": "In-car ECU or bus (exploit vulnerability or implementation error)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "3",
+                    "system_knowledge": "3",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "27"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "8.1.1.1",
+            "name": "Chassis Safety Controller (corrupt code or data)",
+            "from": "Backbone_bus",
+            "target": "CSC",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "28"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.1.1.2",
+            "name": "Chassis Safety Controller (corrupt code or data)",
+            "from": "Backbone_bus",
+            "target": "CSC",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "28"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.3.2",
+            "name": "Chassis Safety Controller (corrupt code or data)",
+            "from": "Backbone_bus",
+            "target": "CSC",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "28"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "7.2.1",
+            "name": "Powertrain Peripherals (corrupt code or data)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "1",
+                    "equipment": "4",
+                    "value": "28"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "2.1.1.2",
+            "name": "Roadside Units (exploit protocol implementation flaws)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "0",
+                    "equipment": "7",
+                    "value": "30"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.2.1",
+            "name": "Roadside Units (exploit protocol implementation flaws)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "0",
+                    "equipment": "7",
+                    "value": "30"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "1.1.1.1.2.3.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.1.1.2.1.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.3.3.2.1",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 5.3.4.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 5.3.4.3",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.2.2.1.1.1.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.1.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.2.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.3.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.4.2",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 15.6.1",
+            "name": "Head Unit (exploit vulnerability or implementation error)",
+            "from": "outside",
+            "target": "HU",
+            "conditions": [
+                {
+                    "time": "10",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "33"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "3.1.1.1.2.1.2",
+            "name": "Keys (illegal acquisition, modification or breaking)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "1",
+                    "value": "35"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.4.4.2",
+            "name": "Keys (illegal acquisition, modification or breaking)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "1",
+                    "value": "35"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 2.1.2.2",
+            "name": "Keys (illegal acquisition, modification or breaking)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "1",
+                    "value": "35"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "3.1.1.1.2.1.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.1.3",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.3.1.1.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 3.2.2.3.3.1.2",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 5.3.2.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 5.3.1.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.1.1.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.1.1.2",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 4.1.2",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.1.1.1.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.1.1.2.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 8.2.1.2.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.1.2",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.3.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 9.2.3.1",
+            "name": "In-car Communications (listen, intercept, alter, inject, replay)",
+            "from": "outside",
+            "target": "communication_unit",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "6",
+                    "opportunity": "4",
+                    "equipment": "4",
+                    "value": "37"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "8.3.1",
+            "name": "Environment Sensors (flash malicious code to firmware)",
+            "from": "outside",
+            "target": "Environment_Sensor",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "7.2.2.3.1.2",
+            "name": "Communications Unit (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 10.1.1.2.1",
+            "name": "Communications Unit (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 11.1.1.2.1",
+            "name": "Communications Unit (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 12.1.1.1",
+            "name": "Communications Unit (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 13.1.1.1.1",
+            "name": "Communications Unit (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "8.1.2",
+            "name": "Chassis Safety Controller (flash malicious code to firmware)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "5.3.4.1.1.1",
+            "name": "Head Unit (malware flashed)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "7.1.2.1",
+            "name": "In-Car ECU (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.1.4.1",
+            "name": "In-Car ECU (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": " 7.2.2.2",
+            "name": "In-Car ECU (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        },
+        {
+            "id": "7.2.2.2",
+            "name": "Powertrain controller (malware flashed with OBD update)",
+            "from": "",
+            "target": "",
+            "conditions": [
+                {
+                    "time": "17",
+                    "expertise": "6",
+                    "system_knowledge": "7",
+                    "opportunity": "4",
+                    "equipment": "7",
+                    "value": "41"
+                },
+                {},
+                {}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+{
+    "components" :[
+        {
+            "name" : "SAT",
+            "description" : "satellite emitter/receiver, which allows a ship to communicate with other vessels and on-ground infrastructures",
+            "precomponents" : [
+                "outside"
+                ],
+            "postcomponents" : [
+                "ECDIS"
+                ],
+            "caracteristics" : [
+                
+                ]
+        },
+        {
+            "name" : "SCC",
+            "description" : "Shore Control Center, which communicates information about traffic with the ship",
+            "precomponents" : [
+                "outside"
+                ],
+            "postcomponents" : [
+                "AIS"
+                ],
+            "caracteristics" : [
+                
+                ]
+        },
+        {
+            "name" : "AIS",
+            "description" : "Autonomous Identification System, which provides information which, together with other systems, helps authorities and other ships to monitor sea traffic",
+            "precomponents" : [
+                "SCC"
+                ],
+            "postcomponents" : [
+                "ECDIS",
+                "ANS"
+                ],
+            "caracteristics" : [
+                ]
+        },
+        {
+            "name" : "ECDIS",
+            "description" : "Electronic Chart Display and Information System, which transmits maps and other useful information",
+            "precomponents" : [
+                "SAT",
+                "AIS"
+                ],
+            "postcomponents" : [
+                "RADAR",
+                "ANS"
+                ],
+            "caracteristics" : [
+                ]
+        },
+        {
+            "name" : "GPS",
+            "description" : "Global Positioning System receiver, which receives the coordinates of the vessel",
+            "precomponents" : [
+                "outside"
+                ],
+            "postcomponents" : [
+                "ANS"
+                ],
+            "caracteristics" : [
+                
+                ]
+        },
+        {
+            "name" : "RADAR",
+            "description" : "RADAR provides the bearing and distance of objects in the vessel’s vicinity for collision avoidance and navigation at sea.",
+            "precomponents" : [
+                "ECDIS"
+                ],
+            "postcomponents" : [
+                "ANS"
+                ],
+            "caracteristics" : [
+                ]
+        },
+        {
+            "name" : "ANS",
+            "description" : "Autonomous Navigation System, which ensures the navigational functions of the vessel",
+            "precomponents" : [
+                "GPS",
+                "ECDIS",
+                "RADAR",
+                "AIS"
+                ],
+            "postcomponents" : [
+                ],
+            "caracteristics" : [
+                ]
+        }
+    ]
+}

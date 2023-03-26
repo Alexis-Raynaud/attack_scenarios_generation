@@ -1,0 +1,27 @@
+Footprint: 0
+Max iterations : 1000
+Number of iterations : 201
+Scenarios that lead to final state : 10
+Scenarios that do not lead to final state : 180
+Global timer : 0.32161426544189453s
+['0.0.0', '6.1.2', '3.1.3']
+['0.0.0', '7.1.1', '6.1.2', '3.1.3']
+['0.0.0', '7.1.1', '4.1.1', '6.1.2', '3.1.3']
+['0.0.0', '7.1.1', '6.1.1', '6.1.2', '3.1.3']
+['0.0.0', '7.1.1', '6.1.2', '1.7.1', '3.1.3']
+['0.0.0', '7.1.1', '6.1.1', '4.1.1', '6.1.2', '3.1.3']
+['0.0.0', '7.1.1', '6.1.2', '1.7.1', '5.1.1', '3.1.3']
+['0.0.0', '7.1.1', '6.1.1', '4.1.1', '6.1.2', '2.1.1', '3.1.3']
+['0.0.0', '7.1.1', '6.1.2', '1.7.1', '5.1.1', '5.2.1', '3.1.3']
+['0.0.0', '7.1.1', '6.1.2', '1.7.1', '5.1.1', '5.4.1', '3.1.3']
+With events names :
+['outside', 'gps_spoofing', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_spoofing', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'corrupted_scc_send_malicious_package_to_ais', 'gps_spoofing', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_jamming', 'gps_spoofing', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_spoofing', 'infected_payload_transfered_to_ecdis', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_jamming', 'corrupted_scc_send_malicious_package_to_ais', 'gps_spoofing', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_spoofing', 'infected_payload_transfered_to_ecdis', 'attacker_accesses_radar', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_jamming', 'corrupted_scc_send_malicious_package_to_ais', 'gps_spoofing', 'malware_deploys_on_ais', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_spoofing', 'infected_payload_transfered_to_ecdis', 'attacker_accesses_radar', 'attacker_deletes_radar_targets', 'ship_deviates_from_route']
+['outside', 'receive_email_with_infected_payload', 'gps_spoofing', 'infected_payload_transfered_to_ecdis', 'attacker_accesses_radar', 'attacker_deactivates_radar', 'ship_deviates_from_route']
