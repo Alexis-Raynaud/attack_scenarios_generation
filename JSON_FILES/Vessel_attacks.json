@@ -1,0 +1,722 @@
+{
+    "atomic-attacks": [
+        {
+            "id": "1.1.1",
+            "name": "attacker_accesses_ecdis",
+            "target": "ECDIS",
+            "conditions": {
+                "AIS_out": [
+                    "3",
+                    "-1"
+                ],
+                "ECDIS_role": [
+                    "0"
+                ]
+            },
+            "results": {
+                "ECDIS_role": [
+                    "1"
+                ]
+            }
+        },
+        {
+            "id": "1.1.2",
+            "name": "attacker_accesses_ecdis",
+            "target": "ECDIS",
+            "conditions": {
+                "AIS_out": [
+                    "-1",
+                    "1"
+                ],
+                "ECDIS_role": [
+                    "0"
+                ]
+            },
+            "results": {
+                "ECDIS_role": [
+                    "1"
+                ]
+            }
+        },
+        {
+            "id": "1.2.1",
+            "name": "attacker_exploits_apache_vulnerability_elevate_priv",
+            "target": "ECDIS",
+            "conditions": {
+                "ECDIS_role": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ECDIS_role": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "1.3.1",
+            "name": "attacker_tempers_with_maps",
+            "target": "ECDIS",
+            "conditions": {
+                "ECDIS_role": [
+                    "2"
+                ],
+                "ECDIS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ECDIS_integrity": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "1.4.1",
+            "name": "attacker_deletes_maps",
+            "target": "ECDIS",
+            "conditions": {
+                "ECDIS_role": [
+                    "2"
+                ],
+                "ECDIS_availability": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ECDIS_availability": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "1.5.1",
+            "name": "download_virus_during_chart_update",
+            "target": "ECDIS",
+            "conditions": {
+                "SAT_out": [
+                    "3",
+                    "-1"
+                ],
+                "ECDIS_role": [
+                    "0"
+                ],
+                "ECDIS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ECDIS_role": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "1.5.2",
+            "name": "download_virus_during_chart_update",
+            "target": "ECDIS",
+            "conditions": {
+                "SAT_out": [
+                    "3",
+                    "-1"
+                ],
+                "ECDIS_role": [
+                    "1"
+                ],
+                "ECDIS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ECDIS_role": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "1.6.1",
+            "name": "lateral_movement_to_ECDIS",
+            "target": "ECDIS",
+            "conditions": {
+                "ECDIS_out": [
+                    "1",
+                    "-1"
+                ],
+                "AIS_role": [
+                    "2"
+                ]
+            },
+            "results": {
+                "ECDIS_out": [
+                    "-1",
+                    "1"
+                ]
+            }
+        },
+        {
+            "id": "1.7.1",
+            "name": "infected_payload_transfered_to_ecdis",
+            "target": "ECDIS",
+            "conditions": {
+                
+                "ECDIS_out" : [
+                    "1",
+                    "-1"
+                ],
+                "SAT_integrity": [
+                    "2"
+                ]
+            },
+            "results": {
+                
+                "ECDIS_out":[
+                    "3",
+                    "-1"
+                ]
+            }
+        },
+        {
+            "id": "2.1.1",
+            "name": "malware_deploys_on_ais",
+            "target": "AIS",
+            "conditions": {
+                "SCC_out": [
+                    "3",
+                    "-1"
+                ],
+                "AIS_role": [
+                    "0"
+                ]
+            },
+            "results": {
+                "AIS_role": [
+                    "1"
+                ],
+                "AIS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "2.1.2",
+            "name": "malware_deploys_on_ais",
+            "target": "AIS",
+            "conditions": {
+                "SCC_out": [
+                    "-1",
+                    "1"
+                ],
+                "AIS_role": [
+                    "0"
+                ]
+            },
+            "results": {
+                "AIS_role": [
+                    "1"
+                ],
+                "AIS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "2.2.1",
+            "name": "privilege_escalation",
+            "target": "AIS",
+            "conditions": {
+                "AIS_role": [
+                    "1"
+                ]
+            },
+            "results": {
+                "AIS_role": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "2.3.1",
+            "name": "attacker_send_false_information_to_ans",
+            "target": "AIS",
+            "conditions": {
+                "ANS_out": [
+                    "1",
+                    "-1"
+                ],
+                "AIS_role": [
+                    "2"
+                ]
+            },
+            "results": {
+                "ANS_out": [
+                    "2",
+                    "-1"
+                ]
+            }
+        },
+        {
+            "id": "3.1.1",
+            "name": "ship_deviates_from_route",
+            "target": "ANS",
+            "conditions": {
+                "AIS_out": [
+                    "2",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "3.1.2",
+            "name": "ship_deviates_from_route",
+            "target": "ANS",
+            "conditions": {
+                "ECDIS_out": [
+                    "2",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "3.1.3",
+            "name": "ship_deviates_from_route",
+            "target": "ANS",
+            "conditions": {
+                "GPS_out": [
+                    "2",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "3.1.4",
+            "name": "ship_deviates_from_route",
+            "target": "ANS",
+            "conditions": {
+                "RADAR_out": [
+                    "2",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "3.2.1",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "AIS_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "3.2.2",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "AIS_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "2"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "3.2.3",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "ECDIS_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "3.2.4",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "ECDIS_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "2"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "3.2.5",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "GPS_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "3.2.6",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "GPS_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "2"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "3.2.7",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "RADAR_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "1"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "3.2.8",
+            "name": "loss_of_incoming_signal",
+            "target": "ANS",
+            "conditions": {
+                "RADAR_out": [
+                    "0",
+                    "-1"
+                ],
+                "ANS_integrity": [
+                    "2"
+                ]
+            },
+            "results": {
+                "ANS_integrity": [
+                    "0"
+                ]
+            }
+        },
+        {
+            "id": "4.1.1",
+            "name": "corrupted_scc_send_malicious_package_to_ais",
+            "target": "SCC",
+            "conditions": {
+                "SCC_init": [
+                    "1"
+                ],
+                "SCC_role": [
+                    "2"
+                ],
+                "SCC_out": [
+                    "1",
+                    "-1"
+                ]
+            },
+            "results": {
+                "SCC_out": [
+                    "3",
+                    "1"
+                ]
+            }
+        },
+        {
+            "id": "5.1.1",
+            "name": "attacker_accesses_radar",
+            "target": "RADAR",
+            "conditions": {
+                "ECDIS_out": [
+                    "3",
+                    "-1"
+                ],
+                "RADAR_role": [
+                    "0"
+                ]
+            },
+            "results": {
+                "RADAR_role": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "5.1.2",
+            "name": "attacker_accesses_radar",
+            "target": "RADAR",
+            "conditions": {
+                "ECDIS_out": [
+                    "-1",
+                    "1"
+                ],
+                "RADAR_role": [
+                    "0"
+                ]
+            },
+            "results": {
+                "RADAR_role": [
+                    "2"
+                ]
+            }
+        }
+        ,
+        {
+            "id": "5.2.1",
+            "name": "attacker_deletes_radar_targets",
+            "target": "RADAR",
+            "conditions": {
+                "RADAR_role": [
+                    "2"
+                ],
+                "RADAR_integrity" : [
+                    "1"
+                ],
+                "RADAR_availability" : [
+                    "1"
+                ]
+            },
+            "results": {
+                "RADAR_integrity": [
+                    "2"
+                ],
+                "RADAR_availability": [
+                    "2"
+                ]
+            }
+        },
+        {
+            "id": "5.3.1",
+            "name": "radar_spoofing",
+            "target": "RADAR",
+            "conditions": {
+                "RADAR_role": [
+                    "2"
+                ],
+                "RADAR_integrity" : [
+                    "1"
+                ]
+            },
+            "results": {
+                "RADAR_integrity": [
+                    "2"
+                ],
+                "RADAR_out":[
+                    "2",
+                    "-1"
+                ]
+            }
+        },
+        {
+            "id": "5.4.1",
+            "name": "attacker_deactivates_radar",
+            "target": "RADAR",
+            "conditions": {
+                "RADAR_role": [
+                    "2"
+                ],
+                "RADAR_availability" : [
+                    "1"
+                ]
+            },
+            "results": {
+                "RADAR_integrity": [
+                    "0"
+                ],
+                "RADAR_availability":[
+                    "0"
+                ],
+                "RADAR_out":[
+                    "0",
+                    "-1"
+                ]
+            }
+        },
+        {
+            "id": "5.5.1",
+            "name": "lateral_movement_from_ecdis_to_radar_via_ethernet",
+            "target": "RADAR",
+            "conditions": {
+                "RADAR_out": [
+                    "1",
+                    "-1"
+                ],
+                "ECDIS_role": [
+                    "1"
+                ]
+            },
+            "results": {
+                "RADAR_out": [
+                    "-1",
+                    "1"
+                ]
+            }
+        },
+        {
+            "id": "5.5.2",
+            "name": "lateral_movement_from_ecdis_to_radar_via_ethernet",
+            "target": "RADAR",
+            "conditions": {
+                "RADAR_out": [
+                    "1",
+                    "-1"
+                ],
+                "ECDIS_role": [
+                    "2"
+                ]
+            },
+            "results": {
+                "RADAR_out": [
+                    "-1",
+                    "1"
+                ]
+            }
+        },
+        {
+            "id": "6.1.1",
+            "name": "gps_jamming",
+            "target": "GPS",
+            "conditions": {
+                
+                "GPS_availability" : [
+                    "1"
+                ]
+            },
+            "results": {
+                
+                "GPS_availability":[
+                    "0"
+                ],
+                "GPS_out":[
+                    "0",
+                    "-1"
+                ]
+            }
+        },
+        {
+            "id": "6.1.2",
+            "name": "gps_spoofing",
+            "target": "GPS",
+            "conditions": {
+                
+                "GPS_integrity" : [
+                    "1"
+                ]
+            },
+            "results": {
+                
+                "GPS_integrity":[
+                    "2"
+                ],
+                "GPS_out":[
+                    "2",
+                    "-1"
+                ]
+            }
+        },
+        {
+            "id": "7.1.1",
+            "name": "receive_email_with_infected_payload",
+            "target": "SAT",
+            "conditions": {
+                
+                "SAT_integrity" : [
+                    "1"
+                ],
+                "SAT_init": [
+                    "1"
+                ]
+            },
+            "results": {
+                
+                "SAT_integrity":[
+                    "2"
+                ]
+            }
+        }
+        
+    ]
+}

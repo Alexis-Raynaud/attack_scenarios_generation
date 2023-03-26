@@ -1,0 +1,212 @@
+{
+    "components" :[
+        {
+            "name" : "DSRC",
+            "description" : "Dedicated Short Range Communications is a short-range communication technology that enables short-range data exchange between vehicles and road infrastructure. Its features include real-time communication, low latency and high reliability.",
+            "precomponents" : [
+                "outside"
+                ],
+            "postcomponents" : [
+                "CU"
+                ],
+            "caracteristics" : [
+                "Activated",
+                "Cryptographic_Protocol",
+                "Authentification_Protocol",
+                "Frequency_Band",
+                "Bandwidth_Limitation"
+                ]
+        },
+        {
+            "name" : "UMTS",
+            "description" : "UMTS (Universal Mobile Telecommunications System) is a third generation (3G) cell phone network technology that enables high-speed wireless connectivity for cell phones and data devices.",
+            "precomponents" : [
+                "outside"
+                ],
+            "postcomponents" : [
+                "Integrity_Module"
+                ],
+            "caracteristics" : [
+                "Activated",
+                "Cryptographic_Protocol",
+                "Authentification_Protocol",
+                "Frequency_Band",
+                "Bandwidth_Limitation"
+                ]
+        },
+        {
+            "name" : "Integrity_Module",
+            "description" : "The integrity module is a security component used to protect the integrity of stored or transmitted data",
+            "precomponents" : [
+                "UMTS"
+                ],
+            "postcomponents" : [
+                "CU"
+                ],
+            "caracteristics" : [
+                "Cryptographic_Protocol",
+                "Verification_Protocol"
+                ]
+        },
+        {
+            "name" : "CU",
+            "description" : "Communication Unit is a functional unit or module that enables a communication system or device to transmit and receive data. This unit can include components such as antennas, modems, network interfaces, communication protocols, software and processors.",
+            "precomponents" : [
+                "DSRC",
+                "Integrity_Module",
+                "Backbone_bus"
+                ],
+            "postcomponents" : [
+                "Backbone_bus"
+                ],
+            "caracteristics" : [
+                "Cryptographic_Protocol",
+                "Authentification_Protocol",
+                "Verification_Protocol"
+                ]
+        },
+        {
+            "name" : "GPS",
+            "description" : "Global Positioning System is a satellite-based navigation system that provides location and time information in all weather conditions, anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites.",
+            "precomponents" : [
+                "outside"
+                ],
+            "postcomponents" : [
+                "Backbone_bus"
+                ],
+            "caracteristics" : [
+                "Activated"
+                ]
+        },
+        {
+            "name" : "Backbone_bus",
+            "description" : "The backbone bus is a network architecture used to connect different devices or equipment on the same network. It consists of a single cable called bus, which connects all the devices together.",
+            "precomponents" : [
+                "GPS",
+                "CU",
+                "HU",
+                "BEM",
+                "PTC"
+                ],
+            "postcomponents" : [
+                "CSC",
+                "CU",
+                "HU",
+                "BEM",
+                "PTC"
+                ],
+            "caracteristics" : [
+                "Cryptographic_Protocol",
+                "Authentification_Protocol",
+                "Verification_Protocol"
+                ]
+        },
+        {
+            "name" : "HU",
+            "description" : "Head Unit is a component of an in-vehicle infotainment system that is responsible for processing and displaying information to the driver.",
+            "precomponents" : [
+                "outside",
+                "Backbone_bus"
+                ],
+            "postcomponents" : [
+                "Backbone_bus"
+                ],
+            "caracteristics" : [
+                "Checking_Protocol",
+                "Authentification_Protocol",
+                "Privilege_Level",
+                "Privilege_Access_Protocol"
+                ]
+        },
+        {
+            "name" : "BEM",
+            "description" : "MyComponent2 description",
+            "precomponents" : [
+                "outside",
+                "Backbone_bus"
+                ],
+            "postcomponents" : [
+                "Backbone_bus"
+                ],
+            "caracteristics" : [
+                "MyComponentCondition",
+                "MyComponentCondition2"
+                ]
+        },
+        {
+            "name" : "PTC",
+            "description" : "MyComponent2 description",
+            "precomponents" : [
+                "outside",
+                "Backbone_bus"
+                ],
+            "postcomponents" : [
+                "Backbone_bus"
+                ],
+            "caracteristics" : [
+                "MyComponentCondition",
+                "MyComponentCondition2"
+                ]
+        },
+        {
+            "name" : "CSC",
+            "description" : "MyComponent2 description",
+            "precomponents" : [
+                "Backbone_bus",
+                "Chassis_Sensor",
+                "Environment_Sensor"
+                ],
+            "postcomponents" : [
+                "Brake_Controller",
+                "Chassis_Sensor",
+                "Environment_Sensor"
+                ],
+            "caracteristics" : [
+                "MyComponentCondition",
+                "MyComponentCondition2"
+                ]
+        },
+        {
+            "name" : "Brake_Controller",
+            "description" : "MyComponent2 description",
+            "precomponents" : [
+                "CSC"
+                ],
+            "postcomponents" : [],
+            "caracteristics" : [
+                "MyComponentCondition",
+                "MyComponentCondition2"
+                ]
+        },
+        {
+            "name" : "Chassis_Sensor",
+            "description" : "MyComponent2 description",
+            "precomponents" : [
+                "outside",
+                "CSC"
+                ],
+            "postcomponents" : [
+                "CSC"
+                ],
+            "caracteristics" : [
+                "MyComponentCondition",
+                "MyComponentCondition2"
+                ]
+        },
+        {
+            "name" : "Environment_Sensor",
+            "description" : "MyComponent2 description",
+            "precomponents" : [
+                "outside",
+                "CSC"
+                ],
+            "postcomponents" : [
+                "CSC"
+                ],
+            "caracteristics" : [
+                "MyComponentCondition",
+                "MyComponentCondition2"
+                ]
+        }
+    ]
+}

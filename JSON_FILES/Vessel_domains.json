@@ -1,0 +1,31 @@
+{
+    
+    "data" : {
+        "0" : "none",
+        "1" : "nominal",
+        "2" : "erroneous",
+        "3" : "infected",
+        "4" : "false_nominal"
+    },
+    "attacker" : {
+        "0": "absence",
+        "1": "presence"
+    },
+    "role": {
+        "0" : "none",
+        "1" : "user",
+        "2" : "root"
+    }, 
+    "CIA" : {
+        
+        "0" : "loss",
+        "1" : "nominal",
+        "2" : "undetected_loss"
+    },
+    "bool": {
+        "0" : "false",
+        "1" : "true"
+    }
+
+
+}

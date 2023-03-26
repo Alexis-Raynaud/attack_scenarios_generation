@@ -1,0 +1,90 @@
+
+{
+    "ECDIS_role" : [
+        "role"
+    ],
+    "ECDIS_integrity" : [
+        "CIA"
+    ],
+    "ECDIS_availability" : [
+        "CIA"
+    ],
+    "ECDIS_out" : [
+        "data",
+        "attacker"
+    ],
+    "AIS_role" : [
+        "role"
+    ],
+    "AIS_integrity" : [
+        "CIA"
+    ],
+    "AIS_availability" : [
+        "CIA"
+    ],
+    "AIS_out" : [
+        "data",
+        "attacker"
+    ],
+    "ANS_integrity" : [
+        "CIA"
+    ],
+    "ANS_availability" : [
+        "CIA"
+    ],
+    "SCC_role" : [
+        "role"
+    ],
+    "SCC_init" :[
+        "bool"
+    ],
+    "SCC_out" : [
+        "data",
+        "attacker"
+    ],
+    "RADAR_role" : [
+        "role"
+    ],
+    "RADAR_integrity" : [
+        "CIA"
+    ],
+    "RADAR_availability" : [
+        "CIA"
+    ],
+    "RADAR_out" : [
+        "data",
+        "attacker"
+    ],
+    "GPS_role" : [
+        "role"
+    ],
+    "GPS_integrity" : [
+        "CIA"
+    ],
+    "GPS_availability" : [
+        "CIA"
+    ],
+    "GPS_out" : [
+        "data",
+        "attacker"
+    ],
+    "SAT_role" : [
+        "role"
+    ],
+    "SAT_integrity" : [
+        "CIA"
+    ],
+    "SAT_availability" : [
+        "CIA"
+    ],
+    "SAT_out" : [
+        "data",
+        "attacker"
+    ],
+    "SAT_init" :[
+        "bool"
+    ]
+
+    
+
+}
