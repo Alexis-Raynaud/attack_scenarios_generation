@@ -37,8 +37,8 @@ for item in events_list:
 
 events_names["0.0.0"] = "outside"
 
-max_iterations = 10000
-max_footprint = 0
+max_iterations = 1000
+max_footprint = "not working for this generation"
 
 
 def state_condition_comparison(  condition, state):
@@ -71,7 +71,8 @@ def check_conditions(conditions, states ):
 events_graphs = [] #list of graphs, a graph  is a couple : a list of nodes (events) and the global states of the system under this graph
 events_graphs_minimality = []
 
-finished_graphs = []
+not_critic_finished_graphs = []
+critic_finished_graphs = []
 initial_event = "0.0.0"
 events_graphs.append([[initial_event], initial_states])
 counter = 0
@@ -82,7 +83,7 @@ start_time_global = time.time()
 
 possible_events = []
 old_possible_events = []
-finished_graph_added= False
+
 
 
 index = 0
@@ -110,14 +111,20 @@ while len(events_graphs) > 0  and counter < max_iterations :
                 possible_events.append(associated_event)
 
 
-        if len(possible_events) == 0 or graph[0][-1][0:4]=="3.1.": #    if there is no possible event or if a final state is reached, the graph is finish 
-            
-            if  graph not in  finished_graphs :
-                finished_graphs.append(graph)
-                events_graphs.remove(graph)
-                finished_graph_added = True
 
+        if  graph[0][-1][0:4]=="3.1.": #   if a final state is reached, the graph is finish 
             
+            
+            if  graph not in  critic_finished_graphs:
+                critic_finished_graphs.append(graph)
+                events_graphs.remove(graph)
+
+        elif len(possible_events) == 0 : #    if there is no possible event, the graph is finish 
+            
+            if  graph not in  not_critic_finished_graphs :
+                not_critic_finished_graphs.append(graph)
+                events_graphs.remove(graph)
+
 
         else  : # if there is possible events, we create a new graph for each possible event
             for new_event in possible_events :
@@ -157,7 +164,8 @@ plt.show()
 global_timer = end_time_global - start_time_global
 
 print("Not finished : " + str(len(events_graphs)))
-print("Finished : " + str(len(finished_graphs)))
+print("Finished but no final event reach : " + str(len(not_critic_finished_graphs)))
+print("Finished with final event reach : " + str(len(critic_finished_graphs)))
 print ("Global timer : " + str(global_timer))
 
 def create_new_render_file(file_name) :
@@ -178,39 +186,37 @@ def create_new_render_file(file_name) :
 
 # write the results in a specific folder ::
 
-file_results_short = create_new_render_file("results_short")
-with open(file_results_short, "w") as f:
-    #describe the configuration$
-    f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
-    f.write("\nScenarios that lead to final state : " + str(len(finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
-    f.write("\n\nScenarios that lead to final state (with event id) : ")
-    for graph in finished_graphs :
-        f.write("\n"+ str(graph[0]) )
-    
-    f.write("\nWith events names :")
-    for graph in finished_graphs :
-        f.write("\n"+ str([events_names[event] for event in graph[0]]) )
 
-file_results_long = create_new_render_file("results_long")
+
+file_results_long = create_new_render_file("results")
 with open(file_results_long, "w") as f:
     #describe the configuration$
     f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
-    f.write("\nScenarios that lead to final state : " + str(len(finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
+    f.write("\nScenarios that lead to final state : " + str(len(critic_finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(not_critic_finished_graphs)) + "\nScenarios that were still running whe the algorithm stops : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
     f.write("\n\nScenarios that lead to final state (with event id) : ")
-    for graph in finished_graphs :
+    for graph in critic_finished_graphs :
         f.write("\n"+ str(graph[0]) )
     
     f.write("\nWith events names :")
-    for graph in finished_graphs :
+    for graph in critic_finished_graphs :
         f.write("\n"+ str([events_names[event] for event in graph[0]]) )
     
     f.write("\n\nScenarios that do not lead to final state (with event id) : ")
+    for graph in not_critic_finished_graphs :
+        f.write("\n"+ str(graph[0]) )
+    
+    f.write("\nWith events names :")
+    for graph in not_critic_finished_graphs :
+        f.write("\n"+ str([events_names[event] for event in graph[0]]) )
+
+    f.write("\n\nScenarios that were still running whe the algorithm stops (with event id) : ")
     for graph in events_graphs :
         f.write("\n"+ str(graph[0]) )
     
     f.write("\nWith events names :")
     for graph in events_graphs :
         f.write("\n"+ str([events_names[event] for event in graph[0]]) )
+
 
 
 
