@@ -181,7 +181,7 @@ def create_new_render_file(file_name) :
 file_results_short = create_new_render_file("results_short")
 with open(file_results_short, "w") as f:
     #describe the configuration$
-    f.write("Footprint: " + str(footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
+    f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
     f.write("\nScenarios that lead to final state : " + str(len(finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
     f.write("\n\nScenarios that lead to final state (with event id) : ")
     for graph in finished_graphs :
@@ -194,7 +194,7 @@ with open(file_results_short, "w") as f:
 file_results_long = create_new_render_file("results_long")
 with open(file_results_long, "w") as f:
     #describe the configuration$
-    f.write("Footprint: " + str(footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
+    f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
     f.write("\nScenarios that lead to final state : " + str(len(finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
     f.write("\n\nScenarios that lead to final state (with event id) : ")
     for graph in finished_graphs :
