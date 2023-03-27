@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from os.path import join, dirname
-from os import listdir, getcwd
+from os import listdir, getcwd, mkdir 
 from sys import argv
 import copy
 import time
 import json
 from matplotlib import pyplot as plt
+import graphviz as gv
 
 
 def read_json(path, field="" ):
@@ -167,31 +168,40 @@ def create_graphs(initial_states, conditions, caracteristics_changed, max_iterat
     return critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter
 
 
+def create_results_folder_path() :
+    main_path = getcwd()
+    directories = listdir(main_path)
+    folder_root_name = "Results"
+    counter = 0
+    folder_name = folder_root_name + str(counter)
+    while folder_name in directories :
+        counter += 1
+        folder_name = folder_root_name + str(counter)
+    mkdir(join(main_path,folder_name))
+    return join(main_path,folder_name)
 
-
-def create_new_render_file(file_name) :
+def create_new_render_file(file_name, folder_path) :
     count_files =0
     original_file_name = file_name
     file_name = original_file_name+ str(count_files)+".txt"
-    path_main = getcwd()
-    path_result_folder = join(path_main, "Results")
-    existing_files = listdir("Results") 
+    
+    existing_files = listdir(folder_path) 
     while file_name in existing_files:
         count_files += 1
         file_name = original_file_name + str(count_files)+".txt"
     
-    return join(path_result_folder,file_name)
+    return join(folder_path,file_name)
 
-def visualize_time (efficiency_graph) :
+def visualize_time (efficiency_graph, folder_path) :
     plt.xlabel('Time')
     plt.ylabel('Nb of graphs')
     plt.title('Nb of graphs vs time taken for generation')
     plt.plot(efficiency_graph[0], efficiency_graph[1])
-    plt.show()
+    plt.savefig(fname = join(folder_path, "time") ) 
 
-def write_results ( critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter) :
+def write_results ( folder_path, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter) :
         
-    file_results_long = create_new_render_file("results")
+    file_results_long = create_new_render_file("results", folder_path)
     with open(file_results_long, "w") as f:
         #describe the configuration$
         f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
@@ -220,6 +230,73 @@ def write_results ( critic_finished_graphs, not_critic_finished_graphs, events_g
         for graph in events_graphs :
             f.write("\n"+ str([events_names[event] for event in graph[0]]) )
 
+
+
+def check_conditions_with_previous_event(previous_event, current_event, conditions, caracteristics_changed) :
+    """ If at least 1 caracteristic changed is in the conditions it's true, previous and current event are directly linked"""
+    for condition_name, condition_value in conditions[current_event].items() :
+        for caracteristic_name, caracteristic_value in caracteristics_changed[previous_event].items() :
+            if condition_name == caracteristic_name :
+                if condition_value == caracteristic_value :
+                    return True
+                elif len(condition_value) > 1 :
+                    if condition_value[0] == "-1" and condition_value[1] == caracteristic_value[1] :
+                        return True
+                    elif condition_value[1] == "-1" and condition_value[0] == caracteristic_value[0] :
+                        return True
+                    else :
+                        pass
+                else :
+                    pass
+    
+    return False
+            
+
+def visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path ) :
+
+    colors = ["black","red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "grey" ]
+    count_nb_graphs = 0
+    no_previous_event = True
+    for graph in critic_finished_graphs :
+        filename = "graph" + str(count_nb_graphs)
+        
+        G = gv.Digraph(filename= filename, directory=folder_path,format='png' )
+        count_nb_graphs += 1
+        different_branchs = 0
+        for index in range (len (graph[0])) :
+            if index == 0 :
+                G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+            if index == 1 :
+                G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                G.edge(str(graph[0][index-1]), str(graph[0][index]), color = colors[different_branchs])
+            
+            if index > 1 :
+                if check_conditions_with_previous_event(graph[0][index-1], graph[0][index], conditions, caracteristics_changed) :
+                    G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                    G.edge(str(graph[0][index-1]), str(graph[0][index]), color = colors[different_branchs])
+                else :
+                    different_branchs += 1
+                    for i in range(1, index) :
+                        if check_conditions_with_previous_event(graph[0][i], graph[0][index], conditions, caracteristics_changed) :
+                            G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                            G.edge(str(graph[0][i]), str(graph[0][index]), color = colors[different_branchs])
+                            no_previous_event = False
+                            break
+                    if no_previous_event:
+                        G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                        G.edge(str(graph[0][0]), str(graph[0][index]), color = colors[different_branchs])
+                        no_previous_event = True
+                        
+                    else :
+                        no_previous_event = True
+        
+        G.render(view = False)
+    
+   
+
+
+    
+
 def main(argc = 0, argv = []):
 
     if argc < 3 or argc > 4 :
@@ -245,24 +322,33 @@ def main(argc = 0, argv = []):
         initial_states = create_states(Vessel_initial_conditions_path)
         events_names, conditions,caracteristics_changed = create_events(Vessel_events_path, initial_states)
         critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, max_iterations, max_footprint)
-        if want_to_visualize :   visualize_time(efficiency_graph)
-        write_results(critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
+        
+        folder_path = create_results_folder_path()
+        
+        write_results(folder_path , critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
+        if want_to_visualize :  
+            visualize_time(efficiency_graph, folder_path)
+            visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
 
         print("Not finished : " + str(len(events_graphs)))
         print("Finished but no final event reach : " + str(len(not_critic_finished_graphs)))
         print("Finished with final event reach : " + str(len(critic_finished_graphs)))
         print ("Global timer : " + str(global_timer))
+
     
     except ValueError :
         print("Error: the program needs 2 interger arguments")
         print("1) the maximum number of iterations")
         print("2) the maximum footprint")
+        print("3) (optional) 1 if you want to visualize the time taken for each iteration, 0 otherwise")
+        print("Example : python3 main.py 100 10 1")
         exit()
     
     
   
 
 if __name__ == '__main__' :
+    #main( 4, ["main.py", "100", "10", "1"])
     main(len(argv), argv)
 
 
