@@ -70,7 +70,7 @@ def check_conditions(conditions, states ):
             return False
     return True # if the systeme states are sufficient, the attack is possible
 
-def create_graphs(initial_states, conditions, caracteristics_changed, max_iterations, max_footprint):
+def create_graphs(initial_states, conditions, caracteristics_changed,final_states, max_iterations, max_footprint):
 
     events_graphs = [] #list of graphs, a graph  is a list containing a list of nodes (events), the global states of the system under this graph ,the actual footprint and the possible events at n-1
 
@@ -113,15 +113,16 @@ def create_graphs(initial_states, conditions, caracteristics_changed, max_iterat
             
 
 
+            #check if one of the final states list is in the graph :
 
-            if  graph[0][-1][0:4]=="3.1.": #   if a final state is reached, the graph is finish 
-                
-                
-                if  graph not in  critic_finished_graphs:
-                    critic_finished_graphs.append(graph)
-                    events_graphs.remove(graph)
+            for final_state in final_states :
+                if set(final_state).issubset(set(graph[0])) :
+                    if graph not in critic_finished_graphs :
+                        critic_finished_graphs.append(graph)
+                        events_graphs.remove(graph)
+                        break
 
-            elif len(possible_events) == 0 : #    if there is no possible event, the graph is finish 
+            if len(possible_events) == 0 : #    if there is no possible event, the graph is finish 
                 
                 if  graph not in  not_critic_finished_graphs :
                     not_critic_finished_graphs.append(graph)
@@ -199,7 +200,7 @@ def visualize_time (efficiency_graph, folder_path) :
     plt.plot(efficiency_graph[0], efficiency_graph[1])
     plt.savefig(fname = join(folder_path, "time") ) 
 
-def write_results ( folder_path, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter) :
+def write_results ( folder_path, final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter) :
         
     file_results_long = create_new_render_file("results", folder_path)
     with open(file_results_long, "w") as f:
@@ -207,6 +208,12 @@ def write_results ( folder_path, minimality_graphs, critic_finished_graphs, not_
         f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
         f.write("\nDifferents minimum scenarios that lead to a final state graphs : " + str(len(minimality_graphs)) )
         f.write("\nScenarios that lead to a final state without minimality : " + str(len(critic_finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(not_critic_finished_graphs)) + "\nScenarios that were still running whe the algorithm stops : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
+        f.write("\n\nThe final states wanted are :" )
+        for final_state in final_states :
+            f.write("\n"+ str(final_state) )
+            f.write("\n"+ str([events_names[event] for event in final_state]) )
+            
+        
         f.write("\n\nDifferents minimum scenarios that lead to a final state graphs (with event id) : ")
         for graph in minimality_graphs :
             f.write("\n"+ str(graph[0]) )
@@ -345,17 +352,17 @@ def main(argc = 0, argv = []):
 
         Vessel_initial_conditions_path = join(dirname(__file__), 'JSON_FILES/Vessel_initial_conditions.json')
         Vessel_events_path = join(dirname(__file__), 'JSON_FILES/Vessel_attacks.json')
-
-
         initial_states = create_states(Vessel_initial_conditions_path)
         events_names, conditions,caracteristics_changed = create_events(Vessel_events_path, initial_states)
-        critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, max_iterations, max_footprint)
+        final_states = [["3.1.1","5.2.1"],["3.1.2","5.2.1"], ["3.1.3","5.2.1"], ["3.1.4","5.2.1"]] # a list of combination of states that describe the critical state of the system ["3.1.1"],["3.1.2"], ["3.1.3"], ["3.1.4"] 
+
+        critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, final_states, max_iterations, max_footprint)
         
         folder_path = create_results_folder_path()
         
         minimality_graphs = minimality(critic_finished_graphs)
 
-        write_results(folder_path ,minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
+        write_results(folder_path , final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
         
         visualize_time(efficiency_graph, folder_path)
         if want_minimality :
