@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from os.path import join, dirname
 from os import listdir, getcwd
 from sys import argv
@@ -66,7 +69,7 @@ def check_conditions(conditions, states ):
             return False
     return True # if the systeme states are sufficient, the attack is possible
 
-def create_graphs(initial_states, conditions, max_iterations, max_footprint):
+def create_graphs(initial_states, conditions, caracteristics_changed, max_iterations, max_footprint):
 
     events_graphs = [] #list of graphs, a graph  is a list containing a list of nodes (events), the global states of the system under this graph ,the actual footprint and the possible events at n-1
 
@@ -241,7 +244,7 @@ def main(argc = 0, argv = []):
 
         initial_states = create_states(Vessel_initial_conditions_path)
         events_names, conditions,caracteristics_changed = create_events(Vessel_events_path, initial_states)
-        critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, max_iterations, max_footprint)
+        critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, max_iterations, max_footprint)
         visualize_time(efficiency_graph)
         write_results(critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
 
