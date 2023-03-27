@@ -222,36 +222,45 @@ def write_results ( critic_finished_graphs, not_critic_finished_graphs, events_g
 
 def main(argc = 0, argv = []):
 
-    if argc != 3 :
-        print("Error: the program needs 2 arguments")
+    if argc < 3 or argc > 4 :
+        print("Error: the program needs at least 2 arguments and max 3")
         print("1) the maximum number of iterations")
         print("2) the maximum footprint")
+        print("3) (optional) 1 if you want to visualize the time taken for each iteration, 0 otherwise")
+        print("Example : python3 main.py 100 10 1")
         exit()
     
-    elif type(argv[1]) != int or type(argv[2]) != int :
-        print("Error: the program needs 2 interger arguments")
-        print("1) the maximum number of iterations")
-        print("2) the maximum footprint")
-        exit()
-    
-    else :
+    try : 
+        max_iterations = int(argv[1])
+        max_footprint = int(argv[2])
+        if argc == 4 :
+            want_to_visualize = int(argv[3])
+        else :
+            want_to_visualize = 0
+
         Vessel_initial_conditions_path = join(dirname(__file__), 'JSON_FILES/Vessel_initial_conditions.json')
         Vessel_events_path = join(dirname(__file__), 'JSON_FILES/Vessel_attacks.json')
-        max_iterations = argv[1]
-        max_footprint = argv[2]
-
 
 
         initial_states = create_states(Vessel_initial_conditions_path)
         events_names, conditions,caracteristics_changed = create_events(Vessel_events_path, initial_states)
         critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, max_iterations, max_footprint)
-        visualize_time(efficiency_graph)
+        if want_to_visualize :   visualize_time(efficiency_graph)
         write_results(critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
 
         print("Not finished : " + str(len(events_graphs)))
         print("Finished but no final event reach : " + str(len(not_critic_finished_graphs)))
         print("Finished with final event reach : " + str(len(critic_finished_graphs)))
         print ("Global timer : " + str(global_timer))
+    
+    except ValueError :
+        print("Error: the program needs 2 interger arguments")
+        print("1) the maximum number of iterations")
+        print("2) the maximum footprint")
+        exit()
+    
+    
+  
 
 if __name__ == '__main__' :
     main(len(argv), argv)
