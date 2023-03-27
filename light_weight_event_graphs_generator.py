@@ -38,7 +38,7 @@ for item in events_list:
 events_names["0.0.0"] = "outside"
 
 max_iterations = 1000
-max_footprint = "not working for this generation"
+max_footprint = 3
 
 
 def state_condition_comparison(  condition, state):
@@ -68,13 +68,13 @@ def check_conditions(conditions, states ):
 
 
 
-events_graphs = [] #list of graphs, a graph  is a couple : a list of nodes (events) and the global states of the system under this graph
+events_graphs = [] #list of graphs, a graph  is a list containing a list of nodes (events), the global states of the system under this graph ,the actual footprint and the possible events at n-1
 events_graphs_minimality = []
 
 not_critic_finished_graphs = []
 critic_finished_graphs = []
 initial_event = "0.0.0"
-events_graphs.append([[initial_event], initial_states])
+events_graphs.append([[initial_event], initial_states,0, []])
 counter = 0
 
 efficiency_graph = []
@@ -82,8 +82,6 @@ efficiency_graph = []
 start_time_global = time.time()
 
 possible_events = []
-old_possible_events = []
-
 
 
 index = 0
@@ -109,6 +107,7 @@ while len(events_graphs) > 0  and counter < max_iterations :
         for  associated_event, event_conditions in conditions.items() :
             if associated_event not in graph[0] and  check_conditions(event_conditions, states):
                 possible_events.append(associated_event)
+        
 
 
 
@@ -128,16 +127,24 @@ while len(events_graphs) > 0  and counter < max_iterations :
 
         else  : # if there is possible events, we create a new graph for each possible event
             for new_event in possible_events :
-                new_graph = copy.deepcopy(graph)
-                new_states = copy.deepcopy(states)
-                for caracteristic_name, value in caracteristics_changed[new_event].items():
-                    for index in range(len(value)) :
-                        if value[index] != "-1" :
-                            new_states[caracteristic_name][index] = value[index]
 
-                new_graph[0].append(new_event)
-                new_graph[1] = copy.deepcopy(new_states)
-                new_events_graphs.append(new_graph)
+                new_footprint = copy.deepcopy(graph[2])
+                if new_event in graph[3] : # graph[3] is the possible events at n-1
+                    new_footprint += 1
+                
+                if new_footprint <= max_footprint :
+                    new_graph = copy.deepcopy(graph)
+                    new_states = copy.deepcopy(states)
+                    for caracteristic_name, value in caracteristics_changed[new_event].items():
+                        for index in range(len(value)) :
+                            if value[index] != "-1" :
+                                new_states[caracteristic_name][index] = value[index]
+
+                    new_graph[0].append(new_event)
+                    new_graph[1] = copy.deepcopy(new_states)
+                    new_graph[2] = copy.deepcopy(new_footprint)
+                    new_graph[3] = copy.deepcopy(possible_events)
+                    new_events_graphs.append(new_graph)
             
             
         
@@ -209,7 +216,7 @@ with open(file_results_long, "w") as f:
     for graph in not_critic_finished_graphs :
         f.write("\n"+ str([events_names[event] for event in graph[0]]) )
 
-    f.write("\n\nScenarios that were still running whe the algorithm stops (with event id) : ")
+    f.write("\n\nScenarios that were still running when the algorithm stops (with event id) : ")
     for graph in events_graphs :
         f.write("\n"+ str(graph[0]) )
     
