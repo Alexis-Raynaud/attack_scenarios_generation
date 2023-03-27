@@ -199,14 +199,23 @@ def visualize_time (efficiency_graph, folder_path) :
     plt.plot(efficiency_graph[0], efficiency_graph[1])
     plt.savefig(fname = join(folder_path, "time") ) 
 
-def write_results ( folder_path, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter) :
+def write_results ( folder_path, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter) :
         
     file_results_long = create_new_render_file("results", folder_path)
     with open(file_results_long, "w") as f:
         #describe the configuration$
         f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
-        f.write("\nScenarios that lead to final state : " + str(len(critic_finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(not_critic_finished_graphs)) + "\nScenarios that were still running whe the algorithm stops : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
-        f.write("\n\nScenarios that lead to final state (with event id) : ")
+        f.write("\nDifferents minimum scenarios that lead to a final state graphs : " + str(len(minimality_graphs)) )
+        f.write("\nScenarios that lead to a final state without minimality : " + str(len(critic_finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(not_critic_finished_graphs)) + "\nScenarios that were still running whe the algorithm stops : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
+        f.write("\n\nDifferents minimum scenarios that lead to a final state graphs (with event id) : ")
+        for graph in minimality_graphs :
+            f.write("\n"+ str(graph[0]) )
+        
+        f.write("\nWith events names :")
+        for graph in minimality_graphs :
+            f.write("\n"+ str([events_names[event] for event in graph[0]]) )
+        
+        f.write("\n\nScenarios that lead to final state without minimality (with event id) : ")
         for graph in critic_finished_graphs :
             f.write("\n"+ str(graph[0]) )
         
@@ -293,7 +302,25 @@ def visualize_top_events_graphs(critic_finished_graphs, events_names, conditions
         G.render(view = False)
     
    
-
+def minimality (critic_finished_graphs) :
+    """ Check if the graphs are minimal, if not, remove the graph that is not minimal"""
+    minimals_graphs = copy.deepcopy(critic_finished_graphs)
+    graphs_to_remove = []
+    for i in range(len(critic_finished_graphs)) :
+        for j in range(len(critic_finished_graphs)) :
+            if i != j :
+                if set(critic_finished_graphs[i][0]).issubset(set(critic_finished_graphs[j][0])) :
+                    if len(critic_finished_graphs[i][0]) > len(critic_finished_graphs[j][0]) : #
+                        graphs_to_remove.append(i)
+                    else :
+                        graphs_to_remove.append(j)
+    
+    graphs_to_remove = list(set(graphs_to_remove))
+    graphs_to_remove.sort(reverse=True)
+    for index in graphs_to_remove :
+        del minimals_graphs[index]
+    
+    return minimals_graphs
 
     
 
@@ -303,17 +330,18 @@ def main(argc = 0, argv = []):
         print("Error: the program needs at least 2 arguments and max 3")
         print("1) the maximum number of iterations")
         print("2) the maximum footprint")
-        print("3) (optional) 1 if you want to visualize the time taken for each iteration, 0 otherwise")
+        print("3) (optional) 1 if you want to visualize only minimal graphs, 0 otherwise (default = 0)")
         print("Example : python3 main.py 100 10 1")
         exit()
     
     try : 
         max_iterations = int(argv[1])
         max_footprint = int(argv[2])
+        
         if argc == 4 :
-            want_to_visualize = int(argv[3])
+            want_minimality = int(argv[3])
         else :
-            want_to_visualize = 0
+            want_minimality = 0
 
         Vessel_initial_conditions_path = join(dirname(__file__), 'JSON_FILES/Vessel_initial_conditions.json')
         Vessel_events_path = join(dirname(__file__), 'JSON_FILES/Vessel_attacks.json')
@@ -325,13 +353,19 @@ def main(argc = 0, argv = []):
         
         folder_path = create_results_folder_path()
         
-        write_results(folder_path , critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
-        if want_to_visualize :  
-            visualize_time(efficiency_graph, folder_path)
-            visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
+        minimality_graphs = minimality(critic_finished_graphs)
 
+        write_results(folder_path ,minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
+        
+        visualize_time(efficiency_graph, folder_path)
+        if want_minimality :
+            visualize_top_events_graphs(minimality_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
+        else :
+            visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
+    
         print("Not finished : " + str(len(events_graphs)))
         print("Finished but no final event reach : " + str(len(not_critic_finished_graphs)))
+        print("Finished with final event reach and minimality : " + str(len(minimality_graphs)))
         print("Finished with final event reach : " + str(len(critic_finished_graphs)))
         print ("Global timer : " + str(global_timer))
 
@@ -340,7 +374,7 @@ def main(argc = 0, argv = []):
         print("Error: the program needs 2 interger arguments")
         print("1) the maximum number of iterations")
         print("2) the maximum footprint")
-        print("3) (optional) 1 if you want to visualize the time taken for each iteration, 0 otherwise")
+        print("3) (optional) 1 if you want to visualize only minimal graphs, 0 otherwise (default = 0)")
         print("Example : python3 main.py 100 10 1")
         exit()
     
@@ -348,7 +382,7 @@ def main(argc = 0, argv = []):
   
 
 if __name__ == '__main__' :
-    #main( 4, ["main.py", "100", "10", "1"])
+    #main( 4, ["main.py", "1000", "1", "1"])
     main(len(argv), argv)
 
 
