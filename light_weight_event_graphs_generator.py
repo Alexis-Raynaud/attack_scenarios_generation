@@ -97,6 +97,8 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
         new_events_graphs = []
 
         for graph in events_graphs :
+            if counter > max_iterations :
+                break
             # if counter > self.max_iterations :
             #     break
             
@@ -131,24 +133,43 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
 
             else  : # if there is possible events, we create a new graph for each possible event
                 for new_event in possible_events :
+                    if max_footprint > 0 :
+                        new_footprint = copy.deepcopy(graph[2])
+                        if new_event in graph[3] : # graph[3] is the possible events at n-1
+                            new_footprint += 1
+                        
+                        if new_footprint <= max_footprint :
+                            new_graph = copy.deepcopy(graph)
+                            new_states = copy.deepcopy(states)
+                            for caracteristic_name, value in caracteristics_changed[new_event].items():
+                                for index in range(len(value)) :
+                                    if value[index] != "-1" :
+                                        new_states[caracteristic_name][index] = value[index]
 
-                    new_footprint = copy.deepcopy(graph[2])
-                    if new_event in graph[3] : # graph[3] is the possible events at n-1
-                        new_footprint += 1
-                    
-                    if new_footprint <= max_footprint :
+                            new_graph[0].append(new_event)
+                            new_graph[1] = copy.deepcopy(new_states)
+                            new_graph[2] = copy.deepcopy(new_footprint)
+                            new_graph[3] = copy.deepcopy(possible_events)
+                            new_events_graphs.append(new_graph)
+                    else : 
                         new_graph = copy.deepcopy(graph)
                         new_states = copy.deepcopy(states)
                         for caracteristic_name, value in caracteristics_changed[new_event].items():
                             for index in range(len(value)) :
                                 if value[index] != "-1" :
                                     new_states[caracteristic_name][index] = value[index]
-
                         new_graph[0].append(new_event)
                         new_graph[1] = copy.deepcopy(new_states)
-                        new_graph[2] = copy.deepcopy(new_footprint)
                         new_graph[3] = copy.deepcopy(possible_events)
                         new_events_graphs.append(new_graph)
+                
+                if max_footprint <=0 :
+                    last_graph_length = len(new_events_graphs[-1][0])
+                    for grand_pa_graph in new_events_graphs : # remove the "grand-parents" graphs
+                        if len(grand_pa_graph[0]) == last_graph_length-1 : # the list is sorted by length, so if the length is not the same, we can exit the loop
+                            break
+                        if len(grand_pa_graph[0]) < last_graph_length-1 :
+                            new_events_graphs.remove(grand_pa_graph)
                 
                 
             
