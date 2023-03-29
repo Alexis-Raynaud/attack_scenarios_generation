@@ -9,6 +9,7 @@ import time
 import json
 from matplotlib import pyplot as plt
 import graphviz as gv
+from configparser import ConfigParser
 
 
 def read_json(path, field="" ):
@@ -354,7 +355,13 @@ def minimality (critic_finished_graphs) :
 
 def main(argc = 0, argv = []):
 
-    if argc < 3 or argc > 4 :
+    if argc == 1 : # if no argument : read the config file
+        parser = ConfigParser()
+        parser.read('configuration.ini')
+        
+
+
+    elif argc < 3 or argc > 4 :
         print("Error: the program needs at least 2 arguments and max 3")
         print("1) the maximum number of iterations")
         print("2) the maximum footprint")
@@ -410,7 +417,7 @@ def main(argc = 0, argv = []):
   
 
 if __name__ == '__main__' :
-    #main( 4, ["main.py", "1000", "1", "1"])
+    #main( 4, ["main.py", "1000", "0", "1"])
     main(len(argv), argv)
 
 
