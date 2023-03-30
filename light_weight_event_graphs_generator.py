@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 
 from os.path import join, dirname
-from os import listdir, getcwd, mkdir 
-from sys import argv
+from os import listdir, getcwd, mkdir
+from sys import argv, platform
 import copy
 import time
 import json
 from matplotlib import pyplot as plt
 import graphviz as gv
-from configparser import ConfigParser
+from configparser import ConfigParser, BasicInterpolation
+
+
 
 
 def read_json(path, field="" ):
@@ -358,7 +360,28 @@ def main(argc = 0, argv = []):
     if argc == 1 : # if no argument : read the config file
         parser = ConfigParser()
         parser.read('configuration.ini')
+        file_dir = getcwd()
+        parser.set('Common', 'file_dir', file_dir)
+        max_iterations = int(parser.get('Algorithm_settings', 'max_iterations'))
+        max_footprint = int(parser.get('Algorithm_settings', 'max_footprint'))
+        max_length = int(parser.get('Algorithm_settings', 'scenario_max_length'))
+        json_path = parser.get('Common', 'json_path').replace("$(file_dir)", file_dir)
+        Vessel_initial_conditions_path = parser.get('Vessel_settings', 'json_path_initial_conditions').replace("$(json_path)", json_path)
+        Vessel_events_path = parser.get('Vessel_settings', 'json_path_attacks').replace("$(json_path)", json_path)
+        final_states = []
+        final_states_strings = parser.get('Algorithm_settings', 'final_states').split('],[')
+        for final_states_combination in final_states_strings :
+            states_combination = []
+            final_states_separated = final_states_combination.split(',')
+            for state in final_states_separated :
+                state = state.replace('[','').replace(']','')
+                states_combination.append(state)
+            final_states.append(states_combination)
         
+        want_minimality = int(parser.get('Render_settings', 'want_minimality'))
+        
+
+
 
 
     elif argc < 3 or argc > 4 :
@@ -369,7 +392,7 @@ def main(argc = 0, argv = []):
         print("Example : python3 main.py 100 10 1")
         exit()
     
-    try : 
+    else :
         max_iterations = int(argv[1])
         max_footprint = int(argv[2])
         
@@ -377,12 +400,15 @@ def main(argc = 0, argv = []):
             want_minimality = int(argv[3])
         else :
             want_minimality = 0
-
+        final_states = [["3.1.1","5.2.1"],["3.1.2","5.2.1"], ["3.1.3","5.2.1"], ["3.1.4","5.2.1"]] # a list of combination of states that describe the critical state of the system ["3.1.1"],["3.1.2"], ["3.1.3"], ["3.1.4"] 
         Vessel_initial_conditions_path = join(dirname(__file__), 'JSON_FILES/Vessel_initial_conditions.json')
         Vessel_events_path = join(dirname(__file__), 'JSON_FILES/Vessel_attacks.json')
+   
+    try : 
+
         initial_states = create_states(Vessel_initial_conditions_path)
         events_names, conditions,caracteristics_changed = create_events(Vessel_events_path, initial_states)
-        final_states = [["3.1.1","5.2.1"],["3.1.2","5.2.1"], ["3.1.3","5.2.1"], ["3.1.4","5.2.1"]] # a list of combination of states that describe the critical state of the system ["3.1.1"],["3.1.2"], ["3.1.3"], ["3.1.4"] 
+        
 
         critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, final_states, max_iterations, max_footprint)
         
@@ -393,11 +419,11 @@ def main(argc = 0, argv = []):
         write_results(folder_path , final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
         
         visualize_time(efficiency_graph, folder_path)
-        if want_minimality :
+        if want_minimality and (platform == "linux" or platform == "linux2") :
             visualize_top_events_graphs(minimality_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
-        else :
+        elif (platform == "linux" or platform == "linux2") :
             visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
-    
+        
         print("Not finished : " + str(len(events_graphs)))
         print("Finished but no final event reach : " + str(len(not_critic_finished_graphs)))
         print("Finished with final event reach and minimality : " + str(len(minimality_graphs)))
