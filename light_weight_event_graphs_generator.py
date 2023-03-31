@@ -241,10 +241,10 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
     return critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter
 
 
-def create_results_folder_path() :
+def create_results_folder_path(file_name) :
     main_path = getcwd()
     directories = listdir(main_path)
-    folder_root_name = "Results"
+    folder_root_name = file_name
     counter = 0
     folder_name = folder_root_name + str(counter)
     while folder_name in directories :
@@ -253,17 +253,7 @@ def create_results_folder_path() :
     mkdir(join(main_path,folder_name))
     return join(main_path,folder_name)
 
-def create_new_render_file(file_name, folder_path) :
-    count_files =0
-    original_file_name = file_name
-    file_name = original_file_name+ str(count_files)+".txt"
-    
-    existing_files = listdir(folder_path) 
-    while file_name in existing_files:
-        count_files += 1
-        file_name = original_file_name + str(count_files)+".txt"
-    
-    return join(folder_path,file_name)
+
 
 def visualize_time (efficiency_graph, folder_path) :
     plt.xlabel('Time')
@@ -272,9 +262,8 @@ def visualize_time (efficiency_graph, folder_path) :
     plt.plot(efficiency_graph[0], efficiency_graph[1])
     plt.savefig(fname = join(folder_path, "time") ) 
 
-def write_results ( folder_path, final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter, max_length) :
-        
-    file_results_long = create_new_render_file("results", folder_path)
+def write_results ( folder_path,file_name, final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter, max_length) :
+    file_results_long = join( folder_path, file_name +".txt")
     with open(file_results_long, "w") as f:
         #describe the configuration$
         f.write("Footprint: " + str(max_footprint) +"\nMax length : "+ str(max_length) +"\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
@@ -472,11 +461,18 @@ def main(argc = 0, argv = []):
 
         critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, final_states, instant_transitions_states,not_superposable_states, max_iterations, max_length, max_footprint)
         
-        folder_path = create_results_folder_path()
+
+        final_event_nomination = "TE"+str(len(final_states[0]))
+        max_length_nomination = "o"+str(max_length)
+        minimality_nomination = ("M" if want_minimality else "noM")
+        footprint_nomination = ("F"+str(max_footprint) if max_footprint > 0 else "noF")
+        file_name = "results_"+final_event_nomination+"_" + max_length_nomination +"_"+ minimality_nomination+"_" + footprint_nomination
+    
+        folder_path = create_results_folder_path(file_name)
         
         minimality_graphs = minimality(critic_finished_graphs)
 
-        write_results(folder_path , final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter, max_length)
+        write_results(folder_path , file_name, final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter, max_length)
         
         visualize_time(efficiency_graph, folder_path)
 
