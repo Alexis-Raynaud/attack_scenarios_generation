@@ -36,18 +36,21 @@ def create_events(path_events, initial_states):
     """ According to the json file, create the events """
     caracteristics_changed = {}
     conditions = {} 
-    events_names = {}       
+    events_names = {} 
+    target_names = {}      
     events_list = read_json(path=path_events, field = 'atomic-attacks')
     for item in events_list:
         caracteristics_changed[item["id"]] = item["results"]
         conditions[item["id"]] = item["conditions"]
         events_names[item["id"]] = item["name"]
+        target_names[item["id"]] = item["target"]
     
     events_names["0.0.0"] = "outside"
     conditions["0.0.0"] = initial_states
     caracteristics_changed["0.0.0"] = {}
+    target_names["0.0.0"] = "outside"
     
-    return events_names, conditions,caracteristics_changed 
+    return events_names, conditions,caracteristics_changed, target_names
 
 
 def state_condition_comparison(  condition, state):
@@ -329,7 +332,7 @@ def check_conditions_with_previous_event(previous_event, current_event, conditio
     return False
             
 
-def visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path ) :
+def visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, target_names, folder_path ) :
 
     colors = ["black","red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "grey" ]
     count_nb_graphs = 0
@@ -342,25 +345,30 @@ def visualize_top_events_graphs(critic_finished_graphs, events_names, conditions
         different_branchs = 0
         for index in range (len (graph[0])) :
             if index == 0 :
-                G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                label_name = events_names[graph[0][index]] + " (" + target_names[graph[0][index]]+ ")"
+                G.node(str(graph[0][index]),label = label_name, color = colors[different_branchs])
             if index == 1 :
-                G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                label_name = events_names[graph[0][index]] + " (" + target_names[graph[0][index]]+ ")"
+                G.node(str(graph[0][index]),label = label_name, color = colors[different_branchs])
                 G.edge(str(graph[0][index-1]), str(graph[0][index]), color = colors[different_branchs])
             
             if index > 1 :
                 if check_conditions_with_previous_event(graph[0][index-1], graph[0][index], conditions, caracteristics_changed) :
-                    G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                    label_name = events_names[graph[0][index]]+ " (" + target_names[graph[0][index]]+ ")"
+                    G.node(str(graph[0][index]),label = label_name, color = colors[different_branchs])
                     G.edge(str(graph[0][index-1]), str(graph[0][index]), color = colors[different_branchs])
                 else :
                     different_branchs += 1
                     for i in range(1, index) :
                         if check_conditions_with_previous_event(graph[0][i], graph[0][index], conditions, caracteristics_changed) :
-                            G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                            label_name = events_names[graph[0][index]] + " (" + target_names[graph[0][index]]+ ")"
+                            G.node(str(graph[0][index]),label = label_name, color = colors[different_branchs])
                             G.edge(str(graph[0][i]), str(graph[0][index]), color = colors[different_branchs])
                             no_previous_event = False
                             break
                     if no_previous_event:
-                        G.node(str(graph[0][index]),label = events_names[graph[0][index]], color = colors[different_branchs])
+                        label_name = events_names[graph[0][index]]+ " (" + target_names[graph[0][index]]+ ")"
+                        G.node(str(graph[0][index]),label = label_name, color = colors[different_branchs])
                         G.edge(str(graph[0][0]), str(graph[0][index]), color = colors[different_branchs])
                         no_previous_event = True
                         
@@ -457,7 +465,7 @@ def main(argc = 0, argv = []):
     try : 
 
         initial_states = create_states(Vessel_initial_conditions_path)
-        events_names, conditions,caracteristics_changed = create_events(Vessel_events_path, initial_states)
+        events_names, conditions,caracteristics_changed, target_names = create_events(Vessel_events_path, initial_states)
 
         critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, final_states, instant_transitions_states,not_superposable_states, max_iterations, max_length, max_footprint)
         
@@ -477,9 +485,9 @@ def main(argc = 0, argv = []):
         visualize_time(efficiency_graph, folder_path)
 
         if want_minimality and (platform == "linux" or platform == "linux2") and want_to_see_results:
-            visualize_top_events_graphs(minimality_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
+            visualize_top_events_graphs(minimality_graphs, events_names, conditions, caracteristics_changed, target_names, folder_path=folder_path)
         elif (platform == "linux" or platform == "linux2") and want_to_see_results :
-            visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
+            visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, target_names, folder_path=folder_path)
         
         clear_unuseful_files(folder_path)
         
