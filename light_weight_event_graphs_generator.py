@@ -73,7 +73,7 @@ def check_conditions(conditions, states ):
             return False
     return True # if the systeme states are sufficient, the attack is possible
 
-def create_graphs(initial_states, conditions, caracteristics_changed,final_states, max_iterations, max_footprint):
+def create_graphs(initial_states, conditions, caracteristics_changed,final_states,instant_transitions_states,not_superposable_states, max_iterations,max_length, max_footprint):
 
     events_graphs = [] #list of graphs, a graph  is a list containing a list of nodes (events), the global states of the system under this graph ,the actual footprint and the possible events at n-1
 
@@ -94,7 +94,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
 
 
 
-    while len(events_graphs) > 0  and counter < max_iterations :
+    while len(events_graphs) > 0  and counter < max_iterations and len(events_graphs[-1][0])<= max_length +1 : # max_length +1 because the first event is the initial eventit doesn't count as an action done by the attacker
 
         
         new_events_graphs = []
@@ -102,8 +102,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
         for graph in events_graphs :
             if counter > max_iterations :
                 break
-            # if counter > self.max_iterations :
-            #     break
+            
             
             #start the timer for each loop
             start_time = time.time()
@@ -135,37 +134,76 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
 
 
             else  : # if there is possible events, we create a new graph for each possible event
-                for new_event in possible_events :
-                    if max_footprint > 0 :
-                        new_footprint = copy.deepcopy(graph[2])
-                        if new_event in graph[3] : # graph[3] is the possible events at n-1
-                            new_footprint += 1
-                        
-                        if new_footprint <= max_footprint :
-                            new_graph = copy.deepcopy(graph)
-                            new_states = copy.deepcopy(states)
-                            for caracteristic_name, value in caracteristics_changed[new_event].items():
-                                for index in range(len(value)) :
-                                    if value[index] != "-1" :
-                                        new_states[caracteristic_name][index] = value[index]
+                
+                
+                #check if any element in possible_events is in instant_transitions_states
+                direct_transition = []
+                for event in instant_transitions_states :
+                    if event in possible_events :
+                        direct_transition.append(event)
 
-                            new_graph[0].append(new_event)
-                            new_graph[1] = copy.deepcopy(new_states)
-                            new_graph[2] = copy.deepcopy(new_footprint)
-                            new_graph[3] = copy.deepcopy(possible_events)
-                            new_events_graphs.append(new_graph)
-                    else : 
+
+                if len(direct_transition) > 0 :
+                    for new_event in direct_transition :
                         new_graph = copy.deepcopy(graph)
                         new_states = copy.deepcopy(states)
                         for caracteristic_name, value in caracteristics_changed[new_event].items():
                             for index in range(len(value)) :
                                 if value[index] != "-1" :
                                     new_states[caracteristic_name][index] = value[index]
+
                         new_graph[0].append(new_event)
                         new_graph[1] = copy.deepcopy(new_states)
                         new_graph[3] = copy.deepcopy(possible_events)
                         new_events_graphs.append(new_graph)
+                        possible_events.remove(new_event)
+                        
                 
+                else : 
+                    for new_event in possible_events :
+                        counter += 1
+                        if counter > max_iterations :
+                            break
+
+                        event_superposable = True
+                        #if there is already an event in the graph that is not superposable with the new event, we don't create the new graph
+                        if (event in not_superposable_states for event in graph[0]) :
+                            if new_event in not_superposable_states :
+                                event_superposable = False
+                                
+
+                        if max_footprint > 0 and event_superposable:
+                            new_footprint = copy.deepcopy(graph[2])
+                            if new_event in graph[3] : # graph[3] is the possible events at n-1
+                                new_footprint += 1
+                            
+                            if new_footprint <= max_footprint :
+                                new_graph = copy.deepcopy(graph)
+                                new_states = copy.deepcopy(states)
+                                for caracteristic_name, value in caracteristics_changed[new_event].items():
+                                    for index in range(len(value)) :
+                                        if value[index] != "-1" :
+                                            new_states[caracteristic_name][index] = value[index]
+
+                                new_graph[0].append(new_event)
+                                new_graph[1] = copy.deepcopy(new_states)
+                                new_graph[2] = copy.deepcopy(new_footprint)
+                                new_graph[3] = copy.deepcopy(possible_events)
+                                new_events_graphs.append(new_graph)
+                        elif event_superposable : 
+                            new_graph = copy.deepcopy(graph)
+                            new_states = copy.deepcopy(states)
+                            for caracteristic_name, value in caracteristics_changed[new_event].items():
+                                for index in range(len(value)) :
+                                    if value[index] != "-1" :
+                                        new_states[caracteristic_name][index] = value[index]
+                            new_graph[0].append(new_event)
+                            new_graph[1] = copy.deepcopy(new_states)
+                            new_graph[3] = copy.deepcopy(possible_events)
+                            new_events_graphs.append(new_graph)
+
+                        
+                    
                 if max_footprint <=0 :
                     last_graph_length = len(new_events_graphs[-1][0])
                     for grand_pa_graph in new_events_graphs : # remove the "grand-parents" graphs
@@ -180,7 +218,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
             end_time = time.time()
             efficiency_graph.append([len(events_graphs), end_time-start_time])
 
-            counter += 1
+            
         
         events_graphs = copy.deepcopy(new_events_graphs)
 
@@ -224,12 +262,12 @@ def visualize_time (efficiency_graph, folder_path) :
     plt.plot(efficiency_graph[0], efficiency_graph[1])
     plt.savefig(fname = join(folder_path, "time") ) 
 
-def write_results ( folder_path, final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter) :
+def write_results ( folder_path, final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter, max_length) :
         
     file_results_long = create_new_render_file("results", folder_path)
     with open(file_results_long, "w") as f:
         #describe the configuration$
-        f.write("Footprint: " + str(max_footprint) + "\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
+        f.write("Footprint: " + str(max_footprint) +"\nMax length : "+ str(max_length) +"\nMax iterations : " + str(max_iterations) + "\nNumber of iterations : " + str(counter) ) 
         f.write("\nDifferents minimum scenarios that lead to a final state graphs : " + str(len(minimality_graphs)) )
         f.write("\nScenarios that lead to a final state without minimality : " + str(len(critic_finished_graphs)) + "\nScenarios that do not lead to final state : " + str(len(not_critic_finished_graphs)) + "\nScenarios that were still running whe the algorithm stops : " + str(len(events_graphs)) + "\nGlobal timer : " + str(global_timer) + "s" )
         f.write("\n\nThe final states wanted are :" )
@@ -353,75 +391,82 @@ def minimality (critic_finished_graphs) :
     
     return minimals_graphs
 
+def read_config_file_return_variables ():
+    config = ConfigParser()
+    config.read('configuration.ini')
+    max_length = int(config.get('Algorithm_settings', 'scenario_max_length'))
+    not_superposable_states_list = config.get('Vessel_settings', 'not_superposable_states').split('],[')
+    not_superposable_states = []
+    for group in not_superposable_states_list :
+        group = group.replace('[','').replace(']','')
+        not_superposable_states.append(group.split(','))
+    instant_transitions_states= config.get('Vessel_settings', 'instant_transitions_states').split(',')
+
+    file_dir = getcwd()
+    config.set('Common', 'file_dir', file_dir)
+    max_iterations = int(config.get('Algorithm_settings', 'max_iterations'))
+    max_footprint = int(config.get('Algorithm_settings', 'max_footprint'))
+    json_path = config.get('Common', 'json_path').replace("$(file_dir)", file_dir)
+    Vessel_initial_conditions_path = config.get('Vessel_settings', 'json_path_initial_conditions').replace("$(json_path)", json_path)
+    Vessel_events_path = config.get('Vessel_settings', 'json_path_attacks').replace("$(json_path)", json_path)
+    final_states = []
+    final_states_strings = config.get('Algorithm_settings', 'final_states').split('],[')
+    for final_states_combination in final_states_strings :
+        states_combination = []
+        final_states_separated = final_states_combination.split(',')
+        for state in final_states_separated :
+            state = state.replace('[','').replace(']','')
+            states_combination.append(state)
+        final_states.append(states_combination)
     
+    want_minimality = int(config.get('Render_settings', 'want_minimality'))
+    want_to_see_results = int(config.get('Render_settings', 'want_to_see_results'))
+
+    return max_length, not_superposable_states, instant_transitions_states, Vessel_initial_conditions_path, Vessel_events_path, final_states, max_iterations, max_footprint, want_minimality, want_to_see_results   
 
 def main(argc = 0, argv = []):
 
-    if argc == 1 : # if no argument : read the config file
-        parser = ConfigParser()
-        parser.read('configuration.ini')
-        file_dir = getcwd()
-        parser.set('Common', 'file_dir', file_dir)
-        max_iterations = int(parser.get('Algorithm_settings', 'max_iterations'))
-        max_footprint = int(parser.get('Algorithm_settings', 'max_footprint'))
-        max_length = int(parser.get('Algorithm_settings', 'scenario_max_length'))
-        json_path = parser.get('Common', 'json_path').replace("$(file_dir)", file_dir)
-        Vessel_initial_conditions_path = parser.get('Vessel_settings', 'json_path_initial_conditions').replace("$(json_path)", json_path)
-        Vessel_events_path = parser.get('Vessel_settings', 'json_path_attacks').replace("$(json_path)", json_path)
-        final_states = []
-        final_states_strings = parser.get('Algorithm_settings', 'final_states').split('],[')
-        for final_states_combination in final_states_strings :
-            states_combination = []
-            final_states_separated = final_states_combination.split(',')
-            for state in final_states_separated :
-                state = state.replace('[','').replace(']','')
-                states_combination.append(state)
-            final_states.append(states_combination)
-        
-        want_minimality = int(parser.get('Render_settings', 'want_minimality'))
-        
-
-
-
-
-    elif argc < 3 or argc > 4 :
-        print("Error: the program needs at least 2 arguments and max 3")
-        print("1) the maximum number of iterations")
-        print("2) the maximum footprint")
-        print("3) (optional) 1 if you want to visualize only minimal graphs, 0 otherwise (default = 0)")
-        print("Example : python3 main.py 100 10 1")
+    # Read the configuration file
+    max_length, not_superposable_states, instant_transitions_states, Vessel_initial_conditions_path, Vessel_events_path, final_states, max_iterations, max_footprint, want_minimality, want_to_see_results = read_config_file_return_variables()
+    
+    if argc == 0 or argc > 5:
+        print("Error: the program needs between 0 and 4 arguments, if 0 arguments the program will use values in the configuration file")
+        print("1) The maximum length of a sequence (default = 10)")
+        print("2) The maximum footprint (if 0 the footprint isn't taken into account)")
+        print("3) The maximum number of iteration (default = 100 000)")
+        print("4) If you want to see the results with graphs (default = 0, no) (1 = yes) ")
+        print("Example : python3 light_weight_event_graphs_generator.py 10 3 100000")
         exit()
     
-    else :
-        max_iterations = int(argv[1])
-        max_footprint = int(argv[2])
+    else:
+        if argc > 1 :
+            max_length = int(argv[1])
+        if argc > 2 :
+            max_footprint = int(argv[2])
+        if argc > 3 :
+            max_iterations = int(argv[3])
+        if argc > 4 :
+            want_to_see_results = int(argv[4])
         
-        if argc == 4 :
-            want_minimality = int(argv[3])
-        else :
-            want_minimality = 0
-        final_states = [["3.1.1","5.2.1"],["3.1.2","5.2.1"], ["3.1.3","5.2.1"], ["3.1.4","5.2.1"]] # a list of combination of states that describe the critical state of the system ["3.1.1"],["3.1.2"], ["3.1.3"], ["3.1.4"] 
-        Vessel_initial_conditions_path = join(dirname(__file__), 'JSON_FILES/Vessel_initial_conditions.json')
-        Vessel_events_path = join(dirname(__file__), 'JSON_FILES/Vessel_attacks.json')
    
     try : 
 
         initial_states = create_states(Vessel_initial_conditions_path)
         events_names, conditions,caracteristics_changed = create_events(Vessel_events_path, initial_states)
-        
 
-        critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, final_states, max_iterations, max_footprint)
+        critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, final_states, instant_transitions_states,not_superposable_states, max_iterations, max_length, max_footprint)
         
         folder_path = create_results_folder_path()
         
         minimality_graphs = minimality(critic_finished_graphs)
 
-        write_results(folder_path , final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter)
+        write_results(folder_path , final_states, minimality_graphs, critic_finished_graphs, not_critic_finished_graphs, events_graphs, events_names, global_timer, max_footprint, max_iterations, counter, max_length)
         
         visualize_time(efficiency_graph, folder_path)
-        if want_minimality and (platform == "linux" or platform == "linux2") :
+
+        if want_minimality and (platform == "linux" or platform == "linux2") and want_to_see_results:
             visualize_top_events_graphs(minimality_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
-        elif (platform == "linux" or platform == "linux2") :
+        elif (platform == "linux" or platform == "linux2") and want_to_see_results :
             visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
         
         print("Not finished : " + str(len(events_graphs)))
@@ -432,18 +477,18 @@ def main(argc = 0, argv = []):
 
     
     except ValueError :
-        print("Error: the program needs 2 interger arguments")
-        print("1) the maximum number of iterations")
-        print("2) the maximum footprint")
-        print("3) (optional) 1 if you want to visualize only minimal graphs, 0 otherwise (default = 0)")
-        print("Example : python3 main.py 100 10 1")
+        print("Error: the program needs between 0 and 4 arguments, if 0 arguments the program will use values in the configuration file")
+        print("1) The maximum length of a sequence (default = 10)")
+        print("2) The maximum footprint (if 0 the footprint isn't taken into account)")
+        print("3) The maximum number of iteration (default = 100 000)")
+        print("4) If you want to see the results with graphs (default = 0, no) (1 = yes) ")
+        print("Example : python3 light_weight_event_graphs_generator.py 10 3 100000")
         exit()
     
     
   
 
 if __name__ == '__main__' :
-    #main( 4, ["main.py", "1000", "0", "1"])
     main(len(argv), argv)
 
 
