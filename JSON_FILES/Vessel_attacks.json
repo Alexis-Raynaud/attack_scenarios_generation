@@ -237,7 +237,7 @@
         {
             "id": "2.3.1",
             "name": "attacker_send_false_information_to_ans",
-            "target": "AIS",
+            "target": "ANS",
             "conditions": {
                 "ANS_out": [
                     "1",
