@@ -246,10 +246,10 @@ def create_results_folder_path(file_name) :
     directories = listdir(main_path)
     folder_root_name = file_name
     counter = 0
-    folder_name = folder_root_name + str(counter)
+    folder_name = folder_root_name +"_"+ str(counter)
     while folder_name in directories :
         counter += 1
-        folder_name = folder_root_name + str(counter)
+        folder_name = folder_root_name +"_"+  str(counter)
     mkdir(join(main_path,folder_name))
     return join(main_path,folder_name)
 
