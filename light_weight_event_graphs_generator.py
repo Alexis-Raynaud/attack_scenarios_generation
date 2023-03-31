@@ -504,6 +504,3 @@ def main(argc = 0, argv = []):
 
 if __name__ == '__main__' :
     main(len(argv), argv)
-
-
-
