@@ -6,7 +6,7 @@ Differents minimum scenarios that lead to a final state graphs : 0
 Scenarios that lead to a final state without minimality : 42
 Scenarios that do not lead to final state : 0
 Scenarios that were still running whe the algorithm stops : 344
-Global timer : 0.46535706520080566s
+Global timer : 0.7112164497375488s
 
 The final states wanted are :
 ['3.1.1', '5.2.1']
