@@ -90,7 +90,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
     not_critic_finished_graphs = []
     critic_finished_graphs = []
     initial_event = "0.0.0"
-    events_graphs.append([[initial_event], initial_states,0, [],0]) # [events, states, footprint, possible_events, if contains a not superposable state]
+    events_graphs.append([[initial_event], initial_states,0, [],[0]*len(not_superposable_states)]) # [events, states, footprint, possible_events, if contains a not superposable state]
     counter = 0
 
     efficiency_graph = []
@@ -175,6 +175,13 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                             break
                         
                         event_superposable = True
+                        
+                        for i in range(len(not_superposable_states)) :
+                            if new_event in not_superposable_states[i] :
+                                if graph[4][i] == 0 :
+                                    graph[4][i] = 1
+                                else :
+                                    event_superposable = False
                         
                         if new_event in not_superposable_states :
                             if graph[4] == 0 :
@@ -402,7 +409,11 @@ def read_config_file_return_variables ():
     config = ConfigParser()
     config.read('configuration.ini')
     max_length = int(config.get('Algorithm_settings', 'scenario_max_length'))
-    not_superposable_states = config.get('Vessel_settings', 'not_superposable_states').split(',')
+    not_superposable_states_list = config.get('Vessel_settings', 'not_superposable_states').split('],[')
+    not_superposable_states = []
+    for group in not_superposable_states_list :
+        group = group.replace('[','').replace(']','')
+        not_superposable_states.append(group.split(','))
     instant_transitions_states= config.get('Vessel_settings', 'instant_transitions_states').split(',')
 
     file_dir = getcwd()
