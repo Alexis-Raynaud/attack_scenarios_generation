@@ -1,8 +1,8 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from os.path import join, dirname
-from os import listdir, getcwd, mkdir
+from os.path import join 
+from os import listdir, getcwd, mkdir, remove
 from sys import argv, platform
 import copy
 import time
@@ -73,6 +73,13 @@ def check_conditions(conditions, states ):
             return False
     return True # if the systeme states are sufficient, the attack is possible
 
+def check_final_states(final_states, graph):
+    for final_state in final_states :
+        if set(final_state).issubset(set(graph[0])) :
+            return True
+    return False
+
+
 def create_graphs(initial_states, conditions, caracteristics_changed,final_states,instant_transitions_states,not_superposable_states, max_iterations,max_length, max_footprint):
 
     events_graphs = [] #list of graphs, a graph  is a list containing a list of nodes (events), the global states of the system under this graph ,the actual footprint and the possible events at n-1
@@ -80,7 +87,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
     not_critic_finished_graphs = []
     critic_finished_graphs = []
     initial_event = "0.0.0"
-    events_graphs.append([[initial_event], initial_states,0, []])
+    events_graphs.append([[initial_event], initial_states,0, [],0]) # [events, states, footprint, possible_events, if contains a not superposable state]
     counter = 0
 
     efficiency_graph = []
@@ -119,14 +126,13 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
 
             #check if one of the final states list is in the graph :
 
-            for final_state in final_states :
-                if set(final_state).issubset(set(graph[0])) :
-                    if graph not in critic_finished_graphs :
-                        critic_finished_graphs.append(graph)
-                        events_graphs.remove(graph)
-                        break
+            if check_final_states(final_states, graph) :
+                if graph not in critic_finished_graphs :
+                    critic_finished_graphs.append(graph)
+                events_graphs.remove(graph)
+                    
 
-            if len(possible_events) == 0 : #    if there is no possible event, the graph is finish 
+            elif len(possible_events) == 0 : #    if there is no possible event, the graph is finish 
                 
                 if  graph not in  not_critic_finished_graphs :
                     not_critic_finished_graphs.append(graph)
@@ -164,12 +170,15 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                         counter += 1
                         if counter > max_iterations :
                             break
-
+                        
                         event_superposable = True
-                        #if there is already an event in the graph that is not superposable with the new event, we don't create the new graph
-                        if (event in not_superposable_states for event in graph[0]) :
-                            if new_event in not_superposable_states :
+                        
+                        if new_event in not_superposable_states :
+                            if graph[4] == 0 :
+                                graph[4] = 1
+                            else :
                                 event_superposable = False
+                            
                                 
 
                         if max_footprint > 0 and event_superposable:
@@ -205,13 +214,14 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                         
                     
                 if max_footprint <=0 :
-                    last_graph_length = len(new_events_graphs[-1][0])
-                    for grand_pa_graph in new_events_graphs : # remove the "grand-parents" graphs
-                        if len(grand_pa_graph[0]) == last_graph_length-1 : # the list is sorted by length, so if the length is not the same, we can exit the loop
-                            break
-                        if len(grand_pa_graph[0]) < last_graph_length-1 :
-                            new_events_graphs.remove(grand_pa_graph)
-                
+                    if len(new_events_graphs) > 0 :
+                        last_graph_length = len(new_events_graphs[-1][0])
+                        for grand_pa_graph in new_events_graphs : # remove the "grand-parents" graphs
+                            if len(grand_pa_graph[0]) == last_graph_length-1 : # the list is sorted by length, so if the length is not the same, we can exit the loop
+                                break
+                            if len(grand_pa_graph[0]) < last_graph_length-1 :
+                                new_events_graphs.remove(grand_pa_graph)
+                    
                 
             
             #end the timer for each loop
@@ -395,11 +405,7 @@ def read_config_file_return_variables ():
     config = ConfigParser()
     config.read('configuration.ini')
     max_length = int(config.get('Algorithm_settings', 'scenario_max_length'))
-    not_superposable_states_list = config.get('Vessel_settings', 'not_superposable_states').split('],[')
-    not_superposable_states = []
-    for group in not_superposable_states_list :
-        group = group.replace('[','').replace(']','')
-        not_superposable_states.append(group.split(','))
+    not_superposable_states = config.get('Vessel_settings', 'not_superposable_states').split(',')
     instant_transitions_states= config.get('Vessel_settings', 'instant_transitions_states').split(',')
 
     file_dir = getcwd()
@@ -423,6 +429,16 @@ def read_config_file_return_variables ():
     want_to_see_results = int(config.get('Render_settings', 'want_to_see_results'))
 
     return max_length, not_superposable_states, instant_transitions_states, Vessel_initial_conditions_path, Vessel_events_path, final_states, max_iterations, max_footprint, want_minimality, want_to_see_results   
+
+def clear_unuseful_files (folder_path) :
+    """ Clear the folder of the unuseful files """
+    files = listdir(folder_path)
+    for file in files :
+        if file.endswith(".png")  :
+            try :
+                remove(folder_path + "/" + file.split('.')[0])
+            except : pass
+
 
 def main(argc = 0, argv = []):
 
@@ -468,6 +484,8 @@ def main(argc = 0, argv = []):
             visualize_top_events_graphs(minimality_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
         elif (platform == "linux" or platform == "linux2") and want_to_see_results :
             visualize_top_events_graphs(critic_finished_graphs, events_names, conditions, caracteristics_changed, folder_path=folder_path)
+        
+        clear_unuseful_files(folder_path)
         
         print("Not finished : " + str(len(events_graphs)))
         print("Finished but no final event reach : " + str(len(not_critic_finished_graphs)))
