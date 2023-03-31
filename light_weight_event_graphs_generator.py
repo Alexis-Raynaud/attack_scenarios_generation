@@ -179,15 +179,14 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                         for i in range(len(not_superposable_states)) :
                             if new_event in not_superposable_states[i] :
                                 if graph[4][i] == 0 :
-                                    graph[4][i] = 1
+                                    new_superposable_states_infos = copy.deepcopy(graph[4])
+                                    new_superposable_states_infos[i] = 1
+                                    break
                                 else :
                                     event_superposable = False
+                                    break
+
                         
-                        if new_event in not_superposable_states :
-                            if graph[4] == 0 :
-                                graph[4] = 1
-                            else :
-                                event_superposable = False
                             
                                 
 
@@ -208,6 +207,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                                 new_graph[1] = copy.deepcopy(new_states)
                                 new_graph[2] = copy.deepcopy(new_footprint)
                                 new_graph[3] = copy.deepcopy(possible_events)
+                                new_graph[4] = copy.deepcopy(new_superposable_states_infos)
                                 new_events_graphs.append(new_graph)
                         elif event_superposable : 
                             new_graph = copy.deepcopy(graph)
@@ -219,6 +219,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                             new_graph[0].append(new_event)
                             new_graph[1] = copy.deepcopy(new_states)
                             new_graph[3] = copy.deepcopy(possible_events)
+                            new_graph[4] = copy.deepcopy(new_superposable_states_infos)
                             new_events_graphs.append(new_graph)
 
                         
