@@ -1,5 +1,6 @@
 
 {
+    
     "ECDIS_role" : [
         "role"
     ],
@@ -35,9 +36,6 @@
     "SCC_role" : [
         "role"
     ],
-    "SCC_init" :[
-        "bool"
-    ],
     "SCC_out" : [
         "data",
         "attacker"
@@ -68,6 +66,12 @@
         "data",
         "attacker"
     ],
+    "GPS_spoofed" : [
+        "bool"
+    ],
+    "GPS_jammed" :[
+        "bool"
+    ],
     "SAT_role" : [
         "role"
     ],
@@ -81,7 +85,7 @@
         "data",
         "attacker"
     ],
-    "SAT_init" :[
+    "not_superposable": [
         "bool"
     ]
 

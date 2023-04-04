@@ -1,11 +1,13 @@
 {
     "atomic-attacks": [
+
+        
         {
             "id": "1.1.1",
             "name": "attacker_accesses_ecdis",
             "target": "ECDIS",
             "conditions": {
-                "AIS_out": [
+                "AIS_out_ECDIS": [
                     "3",
                     "-1"
                 ],
@@ -24,7 +26,7 @@
             "name": "attacker_accesses_ecdis",
             "target": "ECDIS",
             "conditions": {
-                "AIS_out": [
+                "AIS_out_ECDIS": [
                     "-1",
                     "1"
                 ],
@@ -69,8 +71,20 @@
                 "ECDIS_integrity": [
                     "2"
                 ],
-                "ECDIS_out": [
-                    "3",
+                "ECDIS_out_SAT": [
+                    "2",
+                    "-1"
+                ],
+                "ECDIS_out_AIS": [
+                    "2",
+                    "-1"
+                ],
+                "ECDIS_out_RADAR": [
+                    "2",
+                    "-1"
+                ],
+                "ECDIS_out_ANS": [
+                    "2",
                     "-1"
                 ]
 
@@ -91,6 +105,22 @@
             "results": {
                 "ECDIS_availability": [
                     "0"
+                ],
+                "ECDIS_out_SAT": [
+                    "2",
+                    "-1"
+                ],
+                "ECDIS_out_AIS": [
+                    "2",
+                    "-1"
+                ],
+                "ECDIS_out_RADAR": [
+                    "2",
+                    "-1"
+                ],
+                "ECDIS_out_ANS": [
+                    "2",
+                    "-1"
                 ]
             }
         },
@@ -99,7 +129,7 @@
             "name": "download_virus_during_chart_update",
             "target": "ECDIS",
             "conditions": {
-                "SAT_out": [
+                "SAT_out_ECDIS": [
                     "3",
                     "-1"
                 ],
@@ -121,7 +151,7 @@
             "name": "download_virus_during_chart_update",
             "target": "ECDIS",
             "conditions": {
-                "SAT_out": [
+                "SAT_out_ECDIS": [
                     "3",
                     "-1"
                 ],
@@ -143,16 +173,16 @@
             "name": "lateral_movement_to_ECDIS",
             "target": "ECDIS",
             "conditions": {
-                "ECDIS_out": [
+                "AIS_out_ECDIS": [
                     "1",
-                    "-1"
+                    "0"
                 ],
                 "AIS_role": [
                     "2"
                 ]
             },
             "results": {
-                "ECDIS_out": [
+                "AIS_out_ECDIS": [
                     "-1",
                     "1"
                 ]
@@ -164,7 +194,7 @@
             "target": "ECDIS",
             "conditions": {
                 
-                "ECDIS_out" : [
+                "SAT_out_ECDIS" : [
                     "1",
                     "-1"
                 ],
@@ -174,7 +204,7 @@
             },
             "results": {
                 
-                "SAT_out":[
+                "SAT_out_ECDIS":[
                     "3",
                     "-1"
                 ]
@@ -185,7 +215,7 @@
             "name": "malware_deploys_on_ais",
             "target": "AIS",
             "conditions": {
-                "SCC_out": [
+                "SCC_out_AIS": [
                     "3",
                     "-1"
                 ],
@@ -199,11 +229,8 @@
                 ],
                 "AIS_integrity": [
                     "0"
-                ],
-                "AIS_out": [
-                    "3",
-                    "1"
                 ]
+                
 
             }
         },
@@ -212,7 +239,7 @@
             "name": "malware_deploys_on_ais",
             "target": "AIS",
             "conditions": {
-                "SCC_out": [
+                "SCC_out_AIS": [
                     "-1",
                     "1"
                 ],
@@ -226,10 +253,6 @@
                 ],
                 "AIS_integrity": [
                     "0"
-                ],
-                "AIS_out": [
-                    "3",
-                    "1"
                 ]
             }
         },
@@ -245,10 +268,6 @@
             "results": {
                 "AIS_role": [
                     "2"
-                ],
-                "AIS_out": [
-                    "-1",
-                    "1"
                 ]
 
             }
@@ -258,7 +277,7 @@
             "name": "attacker_send_false_information_to_ans",
             "target": "ANS",
             "conditions": {
-                "ANS_out": [
+                "AIS_out_ANS": [
                     "1",
                     "-1"
                 ],
@@ -267,7 +286,7 @@
                 ]
             },
             "results": {
-                "ANS_out": [
+                "AIS_out_ANS": [
                     "2",
                     "-1"
                 ]
@@ -278,7 +297,7 @@
             "name": "ship_deviates_from_route",
             "target": "ANS",
             "conditions": {
-                "AIS_out": [
+                "AIS_out_ANS": [
                     "2",
                     "-1"
                 ],
@@ -289,11 +308,8 @@
             "results": {
                 "ANS_integrity": [
                     "2"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
+            
             }
         },
         {
@@ -301,7 +317,7 @@
             "name": "ship_deviates_from_route",
             "target": "ANS",
             "conditions": {
-                "ECDIS_out": [
+                "ECDIS_out_ANS": [
                     "2",
                     "-1"
                 ],
@@ -312,10 +328,6 @@
             "results": {
                 "ANS_integrity": [
                     "2"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -324,7 +336,7 @@
             "name": "ship_deviates_from_route",
             "target": "ANS",
             "conditions": {
-                "GPS_out": [
+                "GPS_out_ANS": [
                     "2",
                     "-1"
                 ],
@@ -335,10 +347,6 @@
             "results": {
                 "ANS_integrity": [
                     "2"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -347,7 +355,7 @@
             "name": "ship_deviates_from_route",
             "target": "ANS",
             "conditions": {
-                "RADAR_out": [
+                "RADAR_out_ANS": [
                     "2",
                     "-1"
                 ],
@@ -358,10 +366,6 @@
             "results": {
                 "ANS_integrity": [
                     "2"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -370,7 +374,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "AIS_out": [
+                "AIS_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -381,10 +385,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -393,7 +393,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "AIS_out": [
+                "AIS_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -404,10 +404,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -416,7 +412,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "ECDIS_out": [
+                "ECDIS_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -427,10 +423,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -439,7 +431,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "ECDIS_out": [
+                "ECDIS_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -450,10 +442,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -462,7 +450,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "GPS_out": [
+                "GPS_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -473,10 +461,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -485,7 +469,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "GPS_out": [
+                "GPS_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -496,10 +480,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -508,7 +488,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "RADAR_out": [
+                "RADAR_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -519,10 +499,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -531,7 +507,7 @@
             "name": "loss_of_incoming_signal",
             "target": "ANS",
             "conditions": {
-                "RADAR_out": [
+                "RADAR_out_ANS": [
                     "0",
                     "-1"
                 ],
@@ -542,10 +518,6 @@
             "results": {
                 "ANS_integrity": [
                     "0"
-                ],
-                "ANS_out": [
-                    "3",
-                    "-1"
                 ]
             }
         },
@@ -554,20 +526,24 @@
             "name": "corrupted_scc_send_malicious_package_to_ais",
             "target": "SCC",
             "conditions": {
-                "SCC_init": [
-                    "1"
+                
+                "not_superposable": [
+                    "0"
                 ],
                 "SCC_role": [
                     "2"
                 ],
-                "SCC_out": [
+                "SCC_out_AIS": [
                     "1",
-                    "-1"
+                    "0"
                 ]
             },
             "results": {
-                "SCC_out": [
+                "SCC_out_AIS": [
                     "3",
+                    "1"
+                ],
+                "not_superposable": [
                     "1"
                 ]
             }
@@ -577,7 +553,7 @@
             "name": "attacker_accesses_radar",
             "target": "RADAR",
             "conditions": {
-                "ECDIS_out": [
+                "ECDIS_out_RADAR": [
                     "3",
                     "-1"
                 ],
@@ -596,7 +572,7 @@
             "name": "attacker_accesses_radar",
             "target": "RADAR",
             "conditions": {
-                "ECDIS_out": [
+                "ECDIS_out_RADAR": [
                     "-1",
                     "1"
                 ],
@@ -651,10 +627,11 @@
                 "RADAR_integrity": [
                     "2"
                 ],
-                "RADAR_out":[
-                    "2",
+                "RADAR_out_ANS":[
+                    "3",
                     "-1"
                 ]
+
             }
         },
         {
@@ -676,8 +653,8 @@
                 "RADAR_availability":[
                     "0"
                 ],
-                "RADAR_out":[
-                    "0",
+                "RADAR_out_ANS":[
+                    "2",
                     "-1"
                 ]
             }
@@ -687,16 +664,16 @@
             "name": "lateral_movement_from_ecdis_to_radar_via_ethernet",
             "target": "RADAR",
             "conditions": {
-                "RADAR_out": [
+                "ECDIS_out_RADAR": [
                     "1",
-                    "-1"
-                ],
+                    "0"
+                ],                
                 "ECDIS_role": [
                     "1"
                 ]
             },
             "results": {
-                "RADAR_out": [
+                "ECDIS_out_RADAR": [
                     "-1",
                     "1"
                 ]
@@ -707,16 +684,16 @@
             "name": "lateral_movement_from_ecdis_to_radar_via_ethernet",
             "target": "RADAR",
             "conditions": {
-                "RADAR_out": [
+                "ECDIS_out_RADAR": [
                     "1",
-                    "-1"
+                    "0"
                 ],
                 "ECDIS_role": [
                     "2"
                 ]
             },
             "results": {
-                "RADAR_out": [
+                "ECDIS_out_RADAR": [
                     "-1",
                     "1"
                 ]
@@ -730,16 +707,23 @@
                 
                 "GPS_availability" : [
                     "1"
+                ],
+                "GPS_spoofed" : [
+                    "0"
                 ]
+
             },
             "results": {
                 
                 "GPS_availability":[
                     "0"
                 ],
-                "GPS_out":[
+                "GPS_out_ANS":[
                     "0",
                     "-1"
+                ],
+                "GPS_jammed":[
+                    "1"
                 ]
             }
         },
@@ -751,16 +735,23 @@
                 
                 "GPS_integrity" : [
                     "1"
+                ],
+                "GPS_jammed" : [
+                    "0"
                 ]
+                
             },
             "results": {
                 
                 "GPS_integrity":[
                     "2"
                 ],
-                "GPS_out":[
+                "GPS_out_ANS":[
                     "2",
                     "-1"
+                ],
+                "GPS_spoofed":[
+                    "1"
                 ]
             }
         },
@@ -773,8 +764,8 @@
                 "SAT_integrity" : [
                     "1"
                 ],
-                "SAT_init": [
-                    "1"
+                "not_superposable": [
+                    "0"
                 ]
             },
             "results": {
@@ -782,10 +773,10 @@
                 "SAT_integrity":[
                     "2"
                 ],
-                "SAT_out":[
-                    "3",
-                    "-1"
+                "not_superposable": [
+                    "1"
                 ]
+                
             }
         }
         

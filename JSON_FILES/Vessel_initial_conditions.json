@@ -1,4 +1,5 @@
 {
+    
     "ECDIS_role" : [
         "0"
     ],
@@ -8,7 +9,19 @@
     "ECDIS_availability" : [
         "1"
     ],
-    "ECDIS_out" : [
+    "ECDIS_out_SAT" : [
+        "1",
+        "0"
+    ],
+    "ECDIS_out_AIS" : [
+        "1",
+        "0"
+    ],
+    "ECDIS_out_RADAR" : [
+        "1",
+        "0"
+    ],
+    "ECDIS_out_ANS" : [
         "1",
         "0"
     ],
@@ -21,7 +34,15 @@
     "AIS_availability" : [
         "1"
     ],
-    "AIS_out" : [
+    "AIS_out_SCC" : [
+        "1",
+        "0"
+    ],
+    "AIS_out_ANS" : [
+        "1",
+        "0"
+    ],
+    "AIS_out_ECDIS" : [
         "1",
         "0"
     ],
@@ -31,17 +52,27 @@
     "ANS_availability" : [
         "1"
     ],
-    "ANS_out" : [
+    "ANS_out_GPS" : [
+        "1",
+        "0"
+    ],
+    "ANS_out_RADAR" : [
+        "1",
+        "0"
+    ],
+    "ANS_out_ECDIS" : [
+        "1",
+        "0"
+    ],
+    "ANS_out_AIS" : [
         "1",
         "0"
     ],
     "SCC_role" : [
         "2"
     ],
-    "SCC_init" :[
-        "1"
-    ],
-    "SCC_out" : [
+    
+    "SCC_out_AIS" : [
         "1",
         "0"
     ],
@@ -54,7 +85,7 @@
     "RADAR_availability" : [
         "1"
     ],
-    "RADAR_out" : [
+    "RADAR_out_ANS" : [
         "1",
         "0"
     ],
@@ -67,8 +98,14 @@
     "GPS_availability" : [
         "1"
     ],
-    "GPS_out" : [
+    "GPS_out_ANS" : [
         "1",
+        "0"
+    ],
+    "GPS_spoofed" : [
+        "0"
+    ],
+    "GPS_jammed" : [
         "0"
     ],
     "SAT_role" : [
@@ -80,11 +117,11 @@
     "SAT_availability" : [
         "1"
     ],
-    "SAT_out" : [
+    "SAT_out_ECDIS" : [
         "1",
         "0"
     ],
-    "SAT_init" :[
-        "1"
-    ] 
+    "not_superposable": [
+        "0"
+    ]
 }

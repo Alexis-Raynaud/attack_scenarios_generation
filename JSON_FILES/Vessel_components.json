@@ -1,42 +1,73 @@
 {
     "components" :[
         {
+            "name" : "OUTSIDE",
+            "description" : "It represents the attacker",
+            "precomponents" : [
+                
+                ],
+            "postcomponents" : [
+                "SAT",
+                "SCC",
+                "RADAR",
+                "GPS"
+                ],
+            "caracteristics" : [
+                ]
+        },
+        {
             "name" : "SAT",
             "description" : "satellite emitter/receiver, which allows a ship to communicate with other vessels and on-ground infrastructures",
             "precomponents" : [
-                "outside"
+                "OUTSIDE",
+                "ECDIS"
                 ],
             "postcomponents" : [
                 "ECDIS"
                 ],
             "caracteristics" : [
-                
+                "SAT_out_ECDIS",
+                "SAT_availability",
+                "SAT_role",
+                "not_superposable"
                 ]
         },
         {
             "name" : "SCC",
             "description" : "Shore Control Center, which communicates information about traffic with the ship",
             "precomponents" : [
-                "outside"
+                "OUTSIDE",
+                "AIS"
                 ],
             "postcomponents" : [
                 "AIS"
                 ],
             "caracteristics" : [
-                
+                "SCC_role",
+                "SCC_out_AIS",
+                "not_superposable"
                 ]
         },
         {
             "name" : "AIS",
             "description" : "Autonomous Identification System, which provides information which, together with other systems, helps authorities and other ships to monitor sea traffic",
             "precomponents" : [
-                "SCC"
-                ],
-            "postcomponents" : [
+                "SCC",
                 "ECDIS",
                 "ANS"
                 ],
+            "postcomponents" : [
+                "ECDIS",
+                "SCC",
+                "ANS"
+                ],
             "caracteristics" : [
+                "AIS_out_ECDIS",
+                "AIS_out_ANS",
+                "AIS_out_SCC",
+                "AIS_availability",
+                "AIS_integrity",
+                "AIS_role"
                 ]
         },
         {
@@ -44,38 +75,60 @@
             "description" : "Electronic Chart Display and Information System, which transmits maps and other useful information",
             "precomponents" : [
                 "SAT",
-                "AIS"
+                "AIS",
+                "ANS"
                 ],
             "postcomponents" : [
                 "RADAR",
-                "ANS"
+                "ANS",
+                "SAT",
+                "AIS"
                 ],
             "caracteristics" : [
+                "ECDIS_out_ANS",
+                "ECDIS_out_RADAR",
+                "ECDIS_out_AIS",
+                "ECDIS_out_SAT",
+                "ECDIS_availability",
+                "ECDIS_integrity",
+                "ECDIS_role"
                 ]
         },
         {
             "name" : "GPS",
             "description" : "Global Positioning System receiver, which receives the coordinates of the vessel",
             "precomponents" : [
-                "outside"
+                "OUTSIDE",
+                "ANS"
                 ],
             "postcomponents" : [
                 "ANS"
                 ],
             "caracteristics" : [
-                
+                "GPS_role",
+                "GPS_integrity",
+                "GPS_availability",
+                "GPS_out_ANS",
+                "GPS_spoofed",
+                "GPS_jammed"
                 ]
         },
         {
             "name" : "RADAR",
             "description" : "RADAR provides the bearing and distance of objects in the vessel’s vicinity for collision avoidance and navigation at sea.",
             "precomponents" : [
-                "ECDIS"
+                "ECDIS",
+                "ANS"
                 ],
             "postcomponents" : [
                 "ANS"
                 ],
             "caracteristics" : [
+                "RADAR_role" ,
+                "RADAR_integrity",
+                "RADAR_availability",
+                "RADAR_out_ANS"
+                
                 ]
         },
         {
@@ -88,9 +141,20 @@
                 "AIS"
                 ],
             "postcomponents" : [
+                "GPS",
+                "ECDIS",
+                "RADAR",
+                "AIS"
                 ],
             "caracteristics" : [
+                "ANS_integrity",
+                "ANS_availability",
+                "ANS_out_GPS",
+                "ANS_out_ECDIS",
+                "ANS_out_RADAR",
+                "ANS_out_AIS"
                 ]
+                
         }
     ]
 }
