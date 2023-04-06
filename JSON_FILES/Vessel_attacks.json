@@ -65,28 +65,19 @@
                 ],
                 "ECDIS_integrity": [
                     "1"
+                ],
+                "ECDIS_availability": [
+                    "1"
                 ]
             },
             "results": {
-                "ECDIS_integrity": [
-                    "2"
-                ],
-                "ECDIS_out_SAT": [
-                    "2",
-                    "-1"
-                ],
-                "ECDIS_out_AIS": [
-                    "2",
-                    "-1"
-                ],
-                "ECDIS_out_RADAR": [
-                    "2",
-                    "-1"
-                ],
                 "ECDIS_out_ANS": [
                     "2",
                     "-1"
-                ]
+                ],
+		"ECDIS_integrity": [
+		    "2"
+		]
 
             }
         },
@@ -100,26 +91,17 @@
                 ],
                 "ECDIS_availability": [
                     "1"
+                ],
+                "ECDIS_integrity": [
+                    "1"
                 ]
             },
             "results": {
                 "ECDIS_availability": [
                     "0"
                 ],
-                "ECDIS_out_SAT": [
-                    "2",
-                    "-1"
-                ],
-                "ECDIS_out_AIS": [
-                    "2",
-                    "-1"
-                ],
-                "ECDIS_out_RADAR": [
-                    "2",
-                    "-1"
-                ],
                 "ECDIS_out_ANS": [
-                    "2",
+                    "0",
                     "-1"
                 ]
             }
@@ -217,7 +199,7 @@
             "conditions": {
                 "SCC_out_AIS": [
                     "3",
-                    "-1"
+                    "1"
                 ],
                 "AIS_role": [
                     "0"
@@ -232,28 +214,6 @@
                 ]
                 
 
-            }
-        },
-        {
-            "id": "2.1.2",
-            "name": "malware_deploys_on_ais",
-            "target": "AIS",
-            "conditions": {
-                "SCC_out_AIS": [
-                    "-1",
-                    "1"
-                ],
-                "AIS_role": [
-                    "0"
-                ]
-            },
-            "results": {
-                "AIS_role": [
-                    "1"
-                ],
-                "AIS_integrity": [
-                    "0"
-                ]
             }
         },
         {
@@ -608,6 +568,10 @@
                 ],
                 "RADAR_availability": [
                     "2"
+                ],
+                "RADAR_out_ANS":[
+                    "4",
+                    "-1"
                 ]
             }
         },
@@ -628,7 +592,7 @@
                     "2"
                 ],
                 "RADAR_out_ANS":[
-                    "3",
+                    "2",
                     "-1"
                 ]
 
@@ -654,7 +618,7 @@
                     "0"
                 ],
                 "RADAR_out_ANS":[
-                    "2",
+                    "0",
                     "-1"
                 ]
             }

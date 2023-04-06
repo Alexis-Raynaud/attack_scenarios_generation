@@ -95,7 +95,7 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
     not_critic_finished_graphs = []
     critic_finished_graphs = []
     initial_event = "0.0.0"
-    events_graphs.append([[initial_event], copy.deepcopy(initial_states),0, []]) # [events, states, footprint, possible_events]
+    events_graphs.append([[initial_event], copy.deepcopy(initial_states),1, []]) # [events, states, footprint, possible_events]
     counter = 0
 
     efficiency_graph = []
