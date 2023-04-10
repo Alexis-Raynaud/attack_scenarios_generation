@@ -1,0 +1,26 @@
+Footprint: 1
+Max length : 15
+Max iterations : 100000
+Number of iterations : 118
+Differents minimum scenarios that lead to a final state graphs : 0
+Scenarios that lead to a final state without minimality : 0
+Scenarios that do not lead to final state : 0
+Scenarios that were still running whe the algorithm stops : 0
+Global timer : 0.04550957679748535s
+
+The final states wanted are :
+ANS_integrity
+RADAR_integrity
+RADAR_availability
+
+Differents minimum scenarios that lead to a final state graphs (with event id) : 
+With events names :
+
+Scenarios that lead to final state without minimality (with event id) : 
+With events names :
+
+Scenarios that do not lead to final state (with event id) : 
+With events names :
+
+Scenarios that were still running when the algorithm stops (with event id) : 
+With events names :

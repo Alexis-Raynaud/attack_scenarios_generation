@@ -469,7 +469,7 @@ def main(argc = 0, argv = []):
         critic_finished_graphs, not_critic_finished_graphs, events_graphs, efficiency_graph, global_timer, counter = create_graphs(initial_states, conditions, caracteristics_changed, final_states, instant_transitions_states, max_iterations, max_length, max_footprint)
         
 
-        final_event_nomination = "TE"+str(len(final_states))
+        final_event_nomination = "CS"+str(len(final_states))
         max_length_nomination = "o"+str(max_length)
         minimality_nomination = ("M" if want_minimality else "noM")
         footprint_nomination = ("F"+str(max_footprint) if max_footprint > 0 else "noF")
