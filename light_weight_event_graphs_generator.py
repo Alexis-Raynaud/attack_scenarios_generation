@@ -168,7 +168,10 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
 
                         new_graph[0].append(new_event)
                         new_graph[1] = copy.deepcopy(new_states)
-                        new_graph[3] = copy.deepcopy(possible_events)
+                        new_graph[3]= []
+                        for event in possible_events :
+                        #event id is composed of 3 numbers separated by a dot, we only want to compare the first 2 numbers because last one is the iteration number for same events so 1.1.1 and 1.1.2 are the same event but with different conditions
+                            new_graph[3].append(event[:-1])
                         new_events_graphs.append(new_graph)
                         possible_events.remove(new_event)
                         
@@ -187,10 +190,10 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
 
                         if max_footprint > 0:
                             new_footprint = copy.deepcopy(graph[2])
-                            for old_possible_event in graph[3] : # graph[3] is the possible events at n-1
-                                if new_event[:-1] in old_possible_event : #event id is composed of 3 numbers separated by a dot, we only want to compare the first 2 numbers because last one is the iteration number for same events so 1.1.1 and 1.1.2 are the same event but with different conditions
-                                    new_footprint += 1
-                                    break
+                            # graph[3] is the possible events at n-1
+                            if new_event[:-1] in graph[3] : 
+                                new_footprint += 1
+                                
                             
                             
                             if new_footprint <= max_footprint :
@@ -204,7 +207,10 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                                 new_graph[0].append(new_event)
                                 new_graph[1] = copy.deepcopy(new_states)
                                 new_graph[2] = copy.deepcopy(new_footprint)
-                                new_graph[3] = copy.deepcopy(possible_events)
+                                new_graph[3]= []
+                                for event in possible_events :
+                                #event id is composed of 3 numbers separated by a dot, we only want to compare the first 2 numbers because last one is the iteration number for same events so 1.1.1 and 1.1.2 are the same event but with different conditions
+                                    new_graph[3].append(event[:-1])
                                 new_events_graphs.append(new_graph)
                         else: 
                             new_graph = copy.deepcopy(graph)
@@ -215,7 +221,10 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
                                         new_states[caracteristic_name][index] = value[index]
                             new_graph[0].append(new_event)
                             new_graph[1] = copy.deepcopy(new_states)
-                            new_graph[3] = copy.deepcopy(possible_events)
+                            new_graph[3]= []
+                            for event in possible_events :
+                            #event id is composed of 3 numbers separated by a dot, we only want to compare the first 2 numbers because last one is the iteration number for same events so 1.1.1 and 1.1.2 are the same event but with different conditions
+                                new_graph[3].append(event[:-1])
                             new_events_graphs.append(new_graph)
 
                         
