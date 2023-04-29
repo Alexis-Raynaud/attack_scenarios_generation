@@ -187,8 +187,11 @@ def create_graphs(initial_states, conditions, caracteristics_changed,final_state
 
                         if max_footprint > 0:
                             new_footprint = copy.deepcopy(graph[2])
-                            if new_event in graph[3] : # graph[3] is the possible events at n-1
-                                new_footprint += 1
+                            for old_possible_event in graph[3] : # graph[3] is the possible events at n-1
+                                if new_event[:-1] in old_possible_event : #event id is composed of 3 numbers separated by a dot, we only want to compare the first 2 numbers because last one is the iteration number for same events so 1.1.1 and 1.1.2 are the same event but with different conditions
+                                    new_footprint += 1
+                                    break
+                            
                             
                             if new_footprint <= max_footprint :
                                 new_graph = copy.deepcopy(graph)
