@@ -1,12 +1,12 @@
 Footprint: 3
 Max length : 15
 Max iterations : 100000
-Number of iterations : 1924
+Number of iterations : 1536
 Differents minimum scenarios that lead to a final state graphs : 0
-Scenarios that lead to a final state without minimality : 48
+Scenarios that lead to a final state without minimality : 39
 Scenarios that do not lead to final state : 20
 Scenarios that were still running whe the algorithm stops : 0
-Global timer : 1.0971715450286865s
+Global timer : 2.727358102798462s
 
 The final states wanted are :
 ANS_integrity
@@ -40,31 +40,22 @@ Scenarios that lead to final state without minimality (with event id) :
 ['0.0.0', '6.1.2', '3.1.3', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '5.5.1', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '1.3.1', '3.1.2', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '2.3.1', '3.1.1', '5.5.2', '5.1.2', '5.2.1']
-['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '1.3.1', '3.1.2', '5.2.1']
-['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '2.3.1', '3.1.1', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1', '1.3.1', '3.1.2']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1', '2.3.1', '3.1.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1', '6.1.2', '3.1.3']
-['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '6.1.2', '3.1.3', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '6.1.2', '3.1.3', '5.5.2', '5.1.2', '5.2.1']
-['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '2.3.1', '3.1.1', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '5.5.1', '5.1.2', '1.2.1', '1.3.1', '3.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '5.5.1', '5.1.2', '5.2.1', '1.2.1', '1.3.1', '3.1.2']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '5.5.1', '5.1.2', '5.2.1', '1.2.1', '2.3.1', '3.1.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '5.5.1', '5.1.2', '5.2.1', '1.2.1', '6.1.2', '3.1.3']
-['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '6.1.2', '3.1.3', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '2.3.1', '3.1.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '2.3.1', '3.1.1', '6.1.2', '1.6.1', '1.1.2', '5.5.1', '5.1.2', '5.2.1']
-['0.0.0', '4.1.1', '2.1.1', '2.2.1', '6.1.2', '3.1.3', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
-['0.0.0', '4.1.1', '2.1.1', '6.1.2', '3.1.3', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '6.1.2', '3.1.3', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '6.1.2', '3.1.3', '4.1.1', '2.1.1', '2.2.1', '2.3.1', '1.6.1', '1.1.2', '5.5.1', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '1.3.1', '3.1.2', '2.3.1', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '1.3.1', '3.1.2', '6.1.2', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '4.1.1', '2.1.1', '2.2.1', '2.3.1', '3.1.1', '1.6.1', '1.1.2', '1.2.1', '1.3.1', '5.5.2', '5.1.2', '5.2.1']
-['0.0.0', '4.1.1', '2.1.1', '2.2.1', '2.3.1', '3.1.1', '6.1.2', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
 ['0.0.0', '6.1.2', '3.1.3', '4.1.1', '2.1.1', '2.2.1', '1.6.1', '1.1.2', '1.2.1', '1.3.1', '5.5.2', '5.1.2', '5.2.1']
-['0.0.0', '6.1.2', '3.1.3', '4.1.1', '2.1.1', '2.2.1', '2.3.1', '1.6.1', '1.1.2', '1.2.1', '5.5.2', '5.1.2', '5.2.1']
 With events names :
 ['outside', 'gps_spoofing', 'ship_deviates_from_route', 'receive_email_with_infected_payload', 'infected_payload_transfered_to_ecdis', 'download_virus_during_chart_update', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'receive_email_with_infected_payload', 'infected_payload_transfered_to_ecdis', 'download_virus_during_chart_update', 'attacker_tempers_with_maps', 'ship_deviates_from_route', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
@@ -89,31 +80,22 @@ With events names :
 ['outside', 'gps_spoofing', 'ship_deviates_from_route', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_tempers_with_maps', 'ship_deviates_from_route', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_tempers_with_maps', 'ship_deviates_from_route', 'attacker_deletes_radar_targets']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets', 'attacker_tempers_with_maps', 'ship_deviates_from_route']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets', 'gps_spoofing', 'ship_deviates_from_route']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'gps_spoofing', 'ship_deviates_from_route', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'gps_spoofing', 'ship_deviates_from_route', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_tempers_with_maps', 'ship_deviates_from_route', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_tempers_with_maps', 'ship_deviates_from_route']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets', 'attacker_exploits_apache_vulnerability_elevate_priv', 'gps_spoofing', 'ship_deviates_from_route']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'gps_spoofing', 'ship_deviates_from_route', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route', 'gps_spoofing', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'gps_spoofing', 'ship_deviates_from_route', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'gps_spoofing', 'ship_deviates_from_route', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'gps_spoofing', 'ship_deviates_from_route', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'gps_spoofing', 'ship_deviates_from_route', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'attacker_send_false_information_to_ans', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_tempers_with_maps', 'ship_deviates_from_route', 'attacker_send_false_information_to_ans', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_tempers_with_maps', 'ship_deviates_from_route', 'gps_spoofing', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_tempers_with_maps', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
-['outside', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'attacker_send_false_information_to_ans', 'ship_deviates_from_route', 'gps_spoofing', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 ['outside', 'gps_spoofing', 'ship_deviates_from_route', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'attacker_tempers_with_maps', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
-['outside', 'gps_spoofing', 'ship_deviates_from_route', 'corrupted_scc_send_malicious_package_to_ais', 'malware_deploys_on_ais', 'privilege_escalation', 'attacker_send_false_information_to_ans', 'lateral_movement_to_ECDIS', 'attacker_accesses_ecdis', 'attacker_exploits_apache_vulnerability_elevate_priv', 'lateral_movement_from_ecdis_to_radar_via_ethernet', 'attacker_accesses_radar', 'attacker_deletes_radar_targets']
 
 Scenarios that do not lead to final state (with event id) : 
 ['0.0.0', '6.1.1', '3.2.5', '7.1.1', '1.7.1', '1.5.1', '1.3.1', '5.5.2', '5.1.2', '5.2.1']
